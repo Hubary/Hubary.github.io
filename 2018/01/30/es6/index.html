@@ -1,11 +1,362 @@
-<?xml version="1.0" encoding="utf-8"?>
-<search> 
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ES6," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="let命令,const命令,变量解构赋值,解构赋值的用途,字符串的扩展,数值扩展,函数扩展,Symbol,Generator">
+<meta name="keywords" content="ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES2015新特性">
+<meta property="og:url" content="http://yoursite.com/2018/01/30/es6/index.html">
+<meta property="og:site_name" content="银河寒流">
+<meta property="og:description" content="let命令,const命令,变量解构赋值,解构赋值的用途,字符串的扩展,数值扩展,函数扩展,Symbol,Generator">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-30T14:30:44.498Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES2015新特性">
+<meta name="twitter:description" content="let命令,const命令,变量解构赋值,解构赋值的用途,字符串的扩展,数值扩展,函数扩展,Symbol,Generator">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/30/es6/"/>
+
+
+
+
+
+  <title>ES2015新特性 | 银河寒流</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
   
     
-    <entry>
-      <title><![CDATA[ES2015新特性]]></title>
-      <url>/2018/01/30/es6/</url>
-      <content type="html"><![CDATA[<h2 id="es6-guide"><a href="#es6-guide" class="headerlink" title="es6-guide"></a>es6-guide</h2><h3 id="ECMAScript-6-学习笔记"><a href="#ECMAScript-6-学习笔记" class="headerlink" title="ECMAScript 6 学习笔记 "></a><center>ECMAScript 6 学习笔记 </center></h3><center><a href="http://es6.ruanyifeng.com/#docs/style" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/style</a></center>
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">银河寒流</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/30/es6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hubary">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="银河寒流">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ES2015新特性</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-30T20:22:44+08:00">
+                2018-01-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ES2015/" itemprop="url" rel="index">
+                    <span itemprop="name">ES2015</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  let命令,const命令,变量解构赋值,解构赋值的用途,字符串的扩展,数值扩展,函数扩展,Symbol,Generator
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="es6-guide"><a href="#es6-guide" class="headerlink" title="es6-guide"></a>es6-guide</h2><h3 id="ECMAScript-6-学习笔记"><a href="#ECMAScript-6-学习笔记" class="headerlink" title="ECMAScript 6 学习笔记 "></a><center>ECMAScript 6 学习笔记 </center></h3><center><a href="http://es6.ruanyifeng.com/#docs/style" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/style</a></center>
 
 <h3 id="let命令"><a href="#let命令" class="headerlink" title="let命令"></a>let命令</h3><ol>
 <li>let声明的变量，只有所在的代码块内有效，let不像var一样，存在变量提升和函数提升现象</li>
@@ -360,229 +711,382 @@ Object.getPrototypeOf方法可以用来从子类上获取父类,判断，一个�
 <li>Mixin模式的实现<br>Mixin模式指的是，将多个类的接口“混入”（mix in）另一个类<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class DistributedEdit extends mix(Loggable, Serializable) &#123;</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-]]></content>
-      
-        <categories>
-            
-            <category> ES2015 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> ES6 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[设计模式]]></title>
-      <url>/2017/05/18/sheji/</url>
-      <content type="html"><![CDATA[<h2 id="设计模式的分类"><a href="#设计模式的分类" class="headerlink" title="设计模式的分类"></a>设计模式的分类</h2><p>总体来说设计模式分为三大类：</p>
-<ul>
-<li>创建型模式，共五种：工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式。</li>
-<li><p>结构型模式，共七种：适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式。</p>
-</li>
-<li><p>行为型模式，共十一种：策略模式、模板方法模式、观察者模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。</p>
-<h4 id="1-工厂模式"><a href="#1-工厂模式" class="headerlink" title="1.工厂模式:"></a>1.工厂模式:</h4><blockquote>
-<p>（1）：工厂模式主要是为创建对象提供过渡接口，以便将创建对象的具体过程屏蔽隔离起来，达到提高灵活性的目的。<br>首先，创建二者的共同接口：<br>public interface Sender {<br>  public void Send();<br>}<br>其次，创建实现类：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class MailSender implements Sender &#123;  </span><br><span class="line">    @Override  </span><br><span class="line">    public void Send() &#123;  </span><br><span class="line">        System.out.println(&quot;this is mailsender!&quot;);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">public class SmsSender implements Sender &#123;  </span><br><span class="line">  </span><br><span class="line">    @Override  </span><br><span class="line">    public void Send() &#123;  </span><br><span class="line">        System.out.println(&quot;this is sms sender!&quot;);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>最后，建工厂类：<br>public class SendFactory {  </p>
-</blockquote>
-<pre><code>public Sender produce(String type) {  
-    if (&quot;mail&quot;.equals(type)) {  
-        return new MailSender();  
-    } else if (&quot;sms&quot;.equals(type)) {  
-        return new SmsSender();  
-    } else {  
-        System.out.println(&quot;请输入正确的类型!&quot;);  
-        return null;  
-    }  
-}  
-</code></pre><p>}<br>我们来测试下：<br>public class FactoryTest {  </p>
-<pre><code>public static void main(String[] args) {  
-    SendFactory factory = new SendFactory();  
-    Sender sender = factory.produce(&quot;sms&quot;);  
-    sender.Send();  
-}  
-</code></pre><p>}<br>输出：this is sms sender!<br>a、多个工厂方法模式，是对普通工厂方法模式的改进，在普通工厂方法模式中，如果传递的字符串出错，则不能正确创建对象，而多个工厂方法模式是提供多个工厂方法，分别创建对象。关系图：<br>将上面的代码做下修改，改动下SendFactory类就行，如下：<br>public class SendFactory {<br>        public Sender produceMail(){<br>        return new MailSender();<br>    }  </p>
-<pre><code>public Sender produceSms(){  
-    return new SmsSender();  
-}  
-</code></pre><p>}<br>测试类如下：<br>public class FactoryTest {  </p>
-<pre><code>public static void main(String[] args) {  
-    SendFactory factory = new SendFactory();  
-    Sender sender = factory.produceMail();  
-    sender.Send();  
-}  
-</code></pre><p>}<br>输出：this is mailsender!<br>b、静态工厂方法模式，将上面的多个工厂方法模式里的方法置为静态的，不需要创建实例，直接调用即可。<br>public class SendFactory {<br>    public static Sender produceMail(){<br>        return new MailSender();<br>    }  </p>
-<pre><code>public static Sender produceSms(){  
-    return new SmsSender();  
-}  
-</code></pre><p>}<br>public class FactoryTest {  </p>
-<pre><code>public static void main(String[] args) {      
-    Sender sender = SendFactory.produceMail();  
-    sender.Send();  
-</code></pre><p>   }<br>}<br>输出：this is mailsender!<br>总体来说，工厂模式适合：凡是出现了大量的产品需要创建，并且具有共同的接口时，可以通过工厂方法模式进行创建。在以上的三种模式中，第一种如果传 入的字符串有误，不能正确创建对象，第三种相对于第二种，不需要实例化工厂类，所以，大多数情况下，我们会选用第三种——静态工厂方法模式。<br>可以看出工厂方法的加入，使得对象的数量成倍增长。当产品种类非常多时，会出现大量的与之对应的工厂对象，这不是我们所希望的。因为如果不能避免这种情 况，可以考虑使用简单工厂模式与工厂方法模式相结合的方式来减少工厂类：即对于产品树上类似的种类（一般是树的叶子中互为兄弟的）使用简单工厂模式来实现。<br>c、简单工厂和工厂方法模式的比较<br>工厂方法模式和简单工厂模式在定义上的不同是很明显的。工厂方法模式的核心是一个抽象工厂类,而不像简单工厂模式, 把核心放在一个实类上。工厂方法模式可以允许很多实的工厂类从抽象工厂类继承下来, 从而可以在实际上成为多个简单工厂模式的综合,从而推广了简单工厂模式。<br>反过来讲,简单工厂模式是由工厂方法模式退化而来。设想如果我们非常确定一个系统只需要一个实的工厂类, 那么就不妨把抽象工厂类合并到实的工厂类中去。而这样一来,我们就退化到简单工厂模式了。</p>
-<h4 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h4><blockquote>
-<p>代码：<br>//抽象工厂类<br>public abstract class AbstractFactory {<br>    public abstract Vehicle createVehicle();<br>    public abstract Weapon createWeapon();<br>    public abstract Food createFood();<br>}<br>//具体工厂类，其中Food,Vehicle，Weapon是抽象类，<br>public class DefaultFactory extends AbstractFactory{<br>    @Override<br>    public Food createFood() {<br>        return new Apple();<br>    }<br>    @Override<br>    public Vehicle createVehicle() {<br>        return new Car();<br>    }<br>    @Override<br>    public Weapon createWeapon() {<br>        return new AK47();<br>    }<br>}<br>//测试类<br>public class Test {<br>    public static void main(String[] args) {<br>        AbstractFactory f = new DefaultFactory();<br>        Vehicle v = f.createVehicle();<br>        v.run();<br>        Weapon w = f.createWeapon();<br>        w.shoot();<br>        Food a = f.createFood();<br>        a.printName();<br>    }<br>}<br>在抽象工厂模式中，抽象产品 (AbstractProduct) 可能是一个或多个，从而构成一个或多个产品族(Product Family)。 在只有一个产品族的情况下，抽象工厂模式实际上退化到工厂方法模式。</p>
-</blockquote>
-<h3 id="总结。"><a href="#总结。" class="headerlink" title="总结。"></a>总结。</h3><p>（1）简单工厂模式是由一个具体的类去创建其他类的实例，父类是相同的，父类是具体的。<br>（2）工厂方法模式是有一个抽象的父类定义公共接口，子类负责生成具体的对象，这样做的目的是将类的实例化操作延迟到子类中完成。<br>（3）抽象工厂模式提供一个创建一系列相关或相互依赖对象的接口，而无须指定他们具体的类。它针对的是有多个产品的等级结构。而工厂方法模式针对的是一个产品的等级结构。</p>
-<h3 id="2-单例模式（Singleton）"><a href="#2-单例模式（Singleton）" class="headerlink" title="2.单例模式（Singleton）"></a>2.单例模式（Singleton）</h3><blockquote>
-<p>单例对象（Singleton）是一种常用的设计模式。在Java应用中，单例对象能保证在一个JVM中，该对象只有一个实例存在。这样的模式有几个好处：</p>
-<blockquote>
-<p>1、某些类创建比较频繁，对于一些大型的对象，这是一笔很大的系统开销。<br>2、省去了new操作符，降低了系统内存的使用频率，减轻GC压力。<br>3、有些类如交易所的核心交易引擎，控制着交易流程，如果该类可以创建多个的话，系统完全乱了。（比如一个军队出现了多个司令员同时指挥，肯定会乱成一团），所以只有使用单例模式，才能保证核心交易服务器独立控制整个流程。<br>首先我们写一个简单的单例类：<br>[java] view plaincopy<br>public class Singleton {  </p>
-</blockquote>
-</blockquote>
-<pre><code>/* 持有私有静态实例，防止被引用，此处赋值为null，目的是实现延迟加载 */  
-private static Singleton instance = null;  
 
-/* 私有构造方法，防止被实例化 */  
-private Singleton() {  
-}  
-</code></pre><p>   /<em> 静态工程方法，创建实例 </em>/<br>   public static Singleton getInstance() {<br>        if (instance == null) {<br>            instance = new Singleton();<br>        }<br>        return instance;<br>    }  </p>
-<pre><code>/* 如果该对象被用于序列化，可以保证对象在序列化前后保持一致 */  
-public Object readResolve() {  
-    return instance;  
-}  
-</code></pre><p>} </p>
-<p>这个类可以满足基本要求，但是，像这样毫无线程安全保护的类，如果我们把它放入多线程的环境下，肯定就会出现问题了，如何解决？我们首先会想到对getInstance方法加synchronized关键字，如下：<br>[java] view plaincopy<br>public static synchronized Singleton getInstance() {<br>        if (instance == null) {<br>            instance = new Singleton();<br>        }<br>        return instance;<br>    }<br>但是，synchronized关键字锁住的是这个对象，这样的用法，在性能上会有所下降，因为每次调用getInstance()，都要对对象上锁，事实上，只有在第一次创建对象的时候需要加锁，之后就不需要了，所以，这个地方需要改进。我们改成下面这个：<br>[java] view plaincopy<br>public static Singleton getInstance() {<br>       if (instance == null) {<br>            synchronized (instance) {<br>                if (instance == null) {<br>                    instance = new Singleton();<br>                }<br>            }<br>        }<br>        return instance;<br>   } </p>
-<h3 id="1、最简单的实现"><a href="#1、最简单的实现" class="headerlink" title="1、最简单的实现"></a>1、最简单的实现</h3><p>首先，能想到的最简单的实现是，把类的构造函数写成private的，从而保证别的类不能实例化此类。然后在类中返回一个静态示例并返回给调用者。这样，调用者就可以通过这个引用使用这个实例了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line">    private static final Singleton singleton = new Singleton();   </span><br><span class="line">    public static Singleton getInstance()&#123;</span><br><span class="line">        return singleton;</span><br><span class="line">    &#125;   </span><br><span class="line">    private Singleton()&#123;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>如上例，外部使用者如果需要使用SingletonClass的实例，只能通过getInstance()方法，并且它的构造方法是private的，这样就保证了只能有一个对象存在。</p>
-<h3 id="2、性能优化–lazy-loaded"><a href="#2、性能优化–lazy-loaded" class="headerlink" title="2、性能优化–lazy loaded"></a>2、性能优化–lazy loaded</h3><p>上面的代码虽然简单，但是有一个问题—-无论这个类是否被使用，都会创建一个instance对象。如果这个创建很耗时，比如说链接10000次数据库（夸张一点啦….），并且这个类还不一定会被使用，那么这个创建过程就是无用的，怎么办呢？<br>为了解决这个问题，我们想到的新的解决方案：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class SingletonClass &#123; </span><br><span class="line"></span><br><span class="line">  private static SingletonClass instance = null; </span><br><span class="line">    </span><br><span class="line">  public static SingletonClass getInstance() &#123; </span><br><span class="line">    if(instance == null) &#123; </span><br><span class="line">      instance = new SingletonClass(); </span><br><span class="line">    &#125; </span><br><span class="line">    return instance; </span><br><span class="line">  &#125; </span><br><span class="line">    </span><br><span class="line">  private SingletonClass() &#123; </span><br><span class="line">     </span><br><span class="line">  &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>代码的变化有俩处—-首先，把 instance 设置为 null ,知道第一次使用的时候判是否为 null 来创建对象。因为创建对象不在声明处，所以那个 final 的修饰必须去掉。<br>我们来想象一下这个过程。要使用 SingletonClass ，调用 getInstance（）方法，第一次的时候发现instance时null,然后就创建一个对象，返回出去；第二次再使用的时候，因为这个 instance事static的，共享一个对象变量的，所以instance的值已经不是null了，因此不会再创建对象，直接将其返回。<br>这个过程就称为lazy loaded ,也就是迟加载—–直到使用的时候才经行加载。<br>这样写法也比较完美：但是还可以优化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class SingletonClass&#123;</span><br><span class="line">    private static SingletonClass instance = null;</span><br><span class="line">    public static SingletonClass getInstance()&#123;</span><br><span class="line">        if(instance == null)&#123;</span><br><span class="line">            synchronized(SingletonClass.class)&#123;</span><br><span class="line">                if(instance == null)&#123;</span><br><span class="line">                instance = new SingletonClass();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;    </span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">    private SingletonClass()&#123;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>通过单例模式的学习告诉我们：</p>
-<h4 id="1、单例模式理解起来简单，但是具体实现起来还是有一定的难度。"><a href="#1、单例模式理解起来简单，但是具体实现起来还是有一定的难度。" class="headerlink" title="1、单例模式理解起来简单，但是具体实现起来还是有一定的难度。"></a>1、单例模式理解起来简单，但是具体实现起来还是有一定的难度。</h4><h4 id="2、synchronized关键字锁定的是对象，在用的时候，一定要在恰当的地方使用（注意需要使用锁的对象和过程，可能有的时候并不是整个对象及整个过程都需要锁）。"><a href="#2、synchronized关键字锁定的是对象，在用的时候，一定要在恰当的地方使用（注意需要使用锁的对象和过程，可能有的时候并不是整个对象及整个过程都需要锁）。" class="headerlink" title="2、synchronized关键字锁定的是对象，在用的时候，一定要在恰当的地方使用（注意需要使用锁的对象和过程，可能有的时候并不是整个对象及整个过程都需要锁）。"></a>2、synchronized关键字锁定的是对象，在用的时候，一定要在恰当的地方使用（注意需要使用锁的对象和过程，可能有的时候并不是整个对象及整个过程都需要锁）。</h4><blockquote>
-<p>到这儿，单例模式基本已经讲完了，结尾处，笔者突然想到另一个问题，就是采用类的静态方法，实现单例模式的效果，也是可行的，此处二者有什么不同？<br>首先，静态类不能实现接口。（从类的角度说是可以的，但是那样就破坏了静态了。因为接口中不允许有static修饰的方法，所以即使实现了也是非静态的）<br>其次，单例可以被延迟初始化，静态类一般在第一次加载是初始化。之所以延迟加载，是因为有些类比较庞大，所以延迟加载有助于提升性能。<br>再次，单例类可以被继承，他的方法可以被覆写。但是静态类内部方法都是static，无法被覆写。<br>最后一点，单例类比较灵活，毕竟从实现上只是一个普通的Java类，只要满足单例的基本需求，你可以在里面随心所欲的实现一些其它功能，但是静态类 不行。从上面这些概括中，基本可以看出二者的区别，但是，从另一方面讲，我们上面最后实现的那个单例模式，内部就是用一个静态类来实现的，所以，二者有很 大的关联，只是我们考虑问题的层面不同罢了。两种思想的结合，才能造就出完美的解决方案，就像HashMap采用数组+链表来实现一样，其实生活中很多事 情都是这样，单用不同的方法来处理问题，总是有优点也有缺点，最完美的方法是，结合各个方法的优点，才能最好的解决问题！</p>
-<h4 id="3-建造者模式（Builder）"><a href="#3-建造者模式（Builder）" class="headerlink" title="3.建造者模式（Builder）"></a>3.建造者模式（Builder）</h4><p>工厂类模式提供的是创建单个类的模式，而建造者模式则是将各种产品集中起来进行管理，用来创建复合对象，所谓复合对象就是指某个类具有不同的属性，其实建造者模式就是前面抽象工厂模式和最后的Test结合起来得到的。我们看一下代码：<br>还和前面一样，一个Sender接口，两个实现类MailSender和SmsSender。最后，建造者类如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[java] view plaincopy</span><br><span class="line">public class Builder &#123;  </span><br><span class="line">      </span><br><span class="line">    private List&lt;Sender&gt; list = new ArrayList&lt;Sender&gt;();  </span><br><span class="line">      </span><br><span class="line">    public void produceMailSender(int count)&#123;  </span><br><span class="line">        for(int i=0; i&lt;count; i++)&#123;  </span><br><span class="line">            list.add(new MailSender());  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">      </span><br><span class="line">    public void produceSmsSender(int count)&#123;  </span><br><span class="line">        for(int i=0; i&lt;count; i++)&#123;  </span><br><span class="line">            list.add(new SmsSender());  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p>测试类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[java] view plaincopy</span><br><span class="line">public class Test &#123;  </span><br><span class="line">  </span><br><span class="line">    public static void main(String[] args) &#123;  </span><br><span class="line">        Builder builder = new Builder();  </span><br><span class="line">        builder.produceMailSender(10);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>从这点看出，建造者模式将很多功能集成到一个类里，这个类可以创造出比较复杂的东西。所以与工程模式的区别就是：工厂模式关注的是创建单个产品，而建造者模式则关注创建符合对象，多个部分。因此，是选择工厂模式还是建造者模式，依实际情况而定。<br>//其他几种模式<br>我们接着讨论设计模式，上篇文章我讲完了5种创建型模式，这章开始，我将讲下7种结构型模式：适配器模式、装饰模式、代理模式、外观模式、桥接模式、组合模式、享元模式。其中对象的适配器模式是各种模式的起源，我们看下面的图：</p>
-<h3 id="4-适配器模式（Adapter）"><a href="#4-适配器模式（Adapter）" class="headerlink" title="4.适配器模式（Adapter）"></a>4.适配器模式（Adapter）</h3><blockquote>
-<p>适配器模式将某个类的接口转换成客户端期望的另一个接口表示，目的是消除由于接口不匹配所造成的类的兼容性问题。主要分为三类：类的适配器模式、对象的适配器模式、接口的适配器模式。首先，我们来看看类的适配器模式，先看类图：<br>核心思想就是：有一个Source类，拥有一个方法，待适配，目标接口时Targetable，通过Adapter类，将Source的功能扩展到Targetable里，看代码：<br>[java] view plaincopy<br>public class Source {  </p>
-</blockquote>
-<pre><code>public void method1() {  
-    System.out.println(&quot;this is original method!&quot;);  
-}  
-</code></pre><p>}<br>[java] view plaincopy<br>public interface Targetable {  </p>
-<pre><code>/* 与原类中的方法相同 */  
-public void method1();  
+      
+    </div>
+    
+    
+    
 
-/* 新类的方法 */  
-public void method2();  
-</code></pre><p>}<br>[java] view plaincopy<br>public class Adapter extends Source implements Targetable {<br>      @Override<br>    public void method2() {<br>        System.out.println(“this is the targetable method!”);<br>    }<br>}<br>Adapter类继承Source类，实现Targetable接口，下面是测试类：<br>[java] view plaincopy<br>public class AdapterTest {  </p>
-<pre><code>public static void main(String[] args) {  
-    Targetable target = new Adapter();  
-    target.method1();  
-    target.method2();  
-}  
-</code></pre><p>}<br>输出：<br>this is original method!<br>this is the targetable method!<br>这样Targetable接口的实现类就具有了Source类的功能</p>
-<h4 id="5-代理模式-Proxy"><a href="#5-代理模式-Proxy" class="headerlink" title="5.代理模式(Proxy)"></a>5.代理模式(Proxy)</h4><blockquote>
-<p>概述：<br>为其他对象提供一种代理以控制对这个对象的访问。 </p>
-</blockquote>
-]]></content>
-      
-        <categories>
-            
-            <category> 设计模式 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 测试 </tag>
-            
-            <tag> hello </tag>
-            
-        </tags>
-        
-    </entry>
     
-    <entry>
-      <title><![CDATA[Excel 电子表格运用技巧汇总]]></title>
-      <url>/2016/03/02/excelmj/</url>
-      <content type="html"><![CDATA[<h2 id="Excel-电子表格运用技巧汇总"><a href="#Excel-电子表格运用技巧汇总" class="headerlink" title="Excel 电子表格运用技巧汇总"></a><center>Excel 电子表格运用技巧汇总</center></h2><p>目的在于 汇集电子表格的各种使用技巧   共同提高  以后会不断充实 并整理  希望大家也能都整理并回帖发表！</p>
-<h2 id="Excel-XP的八则快速输入技巧"><a href="#Excel-XP的八则快速输入技巧" class="headerlink" title="Excel XP的八则快速输入技巧"></a>Excel XP的八则快速输入技巧</h2><p>　 如果我们在用Excel XP处理庞大的数据信息时，不注意讲究技巧和方法的话，很可能会花费很大的精力。因此如何巧用Excel XP，来快速输入信息就成为各个Excel XP用户非常关心的话题，笔者向大家介绍几则这方面的小技巧。 </p>
-<h3 id="1、快速输入大量含小数点的数字"><a href="#1、快速输入大量含小数点的数字" class="headerlink" title="1、快速输入大量含小数点的数字"></a>1、快速输入大量含小数点的数字</h3><blockquote>
-<p>如果我们需要在Excel XP工作表中输入大量的带有小数位的数字时，按照普通的输入方法，我们可能按照数字原样大小直接输入，例如现在要在单元格中输入0.05这个数字时，我们会把“0.05”原样输入到表格中。不过如果需要输入若干个带有小数点的数字时，我们再按照上面的方法输入的话，每次输入数字时都需要重复输入小数点，这样工作量会变大，输入效率会降低。其实，我们可以使用Excel XP中的小数点自动定位功能，让所有数字的小数点自动定位，从而快速提高输入速度。在使用小数点自动定位功能时，我们可以先在Excel XP的编辑界面中，用鼠标依次单击“工具”/“选项”/“编辑”标签，在弹出的对话框中选中“自动设置小数点”复选框，然后在“位数”微调编辑框中键入需要显示在小数点右面的位数就可以了。以后我们再输入带有小数点的数字时，直接输入数字，而小数点将在回车键后自动进行定位。例如，我们要在某单元格中键入0.06的话，可以在上面的设置中，让“位数”选项为2，然后直接在指定单元格中输入6，回车以后，该单元格的数字自动变为“0.06”，怎么样简单吧？ </p>
-</blockquote>
-<h3 id="2、快速录入文本文件中的内容"><a href="#2、快速录入文本文件中的内容" class="headerlink" title="2、快速录入文本文件中的内容"></a>2、快速录入文本文件中的内容</h3><blockquote>
-<p>现在您手边假如有一些以纯文本格式储存的文件，如果此时您需要将这些数据制作成Excel XP的工作表，那该怎么办呢？重新输入一遍，大概只有头脑有毛病的人才会这样做；将菜单上的数据一个个复制/粘贴到工作表中，也需花很多时间。没关系！您只要在Excel XP中巧妙使用其中的文本文件导入功能，就可以大大减轻需要重新输入或者需要不断复制、粘贴的巨大工作量了。使用该功能时，您只要在Excel XP编辑区中，依次用鼠标单击菜单栏中的“数据/获取外部数据/导入文本文件”命令，然后在导入文本会话窗口选择要导入的文本文件，再按下“导入”钮以后，程序会弹出一个文本导入向导对话框，您只要按照向导的提示进行操作，就可以把以文本格式的数据转换成工作表的格式了。 </p>
-</blockquote>
-<h3 id="3、快速输入大量相同数据"><a href="#3、快速输入大量相同数据" class="headerlink" title="3、快速输入大量相同数据"></a>3、快速输入大量相同数据</h3><blockquote>
-<p>如果你希望在不同的单元格中输入大量相同的数据信息，那么你不必逐个单元格一个一个地输入，那样需要花费好长时间，而且还比较容易出错。你可以通过下面的操作方法在多个相邻或不相邻的单元格中快速填充同一个数据，具体方法为：首先同时选中需要填充数据的单元格。若某些单元格不相邻，可在按住Ctrl键的同时，点击鼠标左键，逐个选中；其次输入要填充的某个数据。按住Ctrl键的同时，按回车键，则刚才选中的所有单元格同时填入该数据。 </p>
-</blockquote>
-<h3 id="4、快速进行中英文输入法切换"><a href="#4、快速进行中英文输入法切换" class="headerlink" title="4、快速进行中英文输入法切换"></a>4、快速进行中英文输入法切换</h3><blockquote>
-<p>一张工作表常常会既包含有数字信息，又包含有文字信息，要录入这样一种工作表就需要我们不断地在中英文之间反复切换输入法，非常麻烦，为了方便操作，我们可以用以下方法实现自动切换：首先用鼠标选中需要输入中文的单元格区域，然后在输入法菜单中选择一个合适的中文输入法；接着打开“有效数据”对话框，选中“IME模式”标签，在“模式”框中选择打开，单击“确定”按钮；然后再选中输入数字的单元格区域，在“有效数据”对话框中，单击“IME模式”选项卡，在“模式”框中选择关闭（英文模式）；最后单击“确定”按钮，这样用鼠标分别在刚才设定的两列中选中单元格，五笔和英文输入方式就可以相互切换了。 </p>
-</blockquote>
-<h3 id="5、快速删除工作表中空行"><a href="#5、快速删除工作表中空行" class="headerlink" title="5、快速删除工作表中空行"></a>5、快速删除工作表中空行</h3><blockquote>
-<p>删除Excel XP工作表中的空行，一般的方法是需要将空行都找出来，然后逐行删除，但这样做操作量非常大，很不方便。那么如何才能减轻删除工作表中空行的工作量呢？您可以使用下面的操作方法来进行删除：首先打开要删除空行的工作表，在打开的工作表中用鼠标单击菜单栏中的“ 插 入”菜单项，并从下拉菜单中选择“列”，从而插入一新的列Ｘ，在Ｘ列中顺序填入整数；然后根据其他任何一列将表中的行排序，使所有空行都集中到表的底部。删去所有空行中Ｘ列的数据，以Ｘ列重新排序，然后删去Ｘ列。按照这样的删除方法，无论工作表中包含多少空行，您就可以很快地删除了。</p>
-</blockquote>
-<h3 id="6、快速对不同单元格中字号进行调整"><a href="#6、快速对不同单元格中字号进行调整" class="headerlink" title="6、快速对不同单元格中字号进行调整"></a>6、快速对不同单元格中字号进行调整</h3><blockquote>
-<p>在使用Excel XP编辑文件时，常常需要将某一列的宽度固定，但由于该列各单元格中的字符数目不等，致使有的单元格中的内容不能完全显示在屏幕上，为了让这些单元格中的数据都显示在屏幕上，就不得不对这些单元格重新定义较小的字号。如果依次对这些单元格中的字号调整的话，工作量将会变得很大。其实，您可以采用下面的方法来减轻字号调整的工作量：首先新建或打开一个工作簿，并选中需要Excel XP根据单元格的宽度调整字号的单元格区域；其次单击用鼠标依次单击菜单栏中的“格式”/“单元格”/“对齐”标签，在“文本控制”下选中“缩小字体填充”复选框，并单击“确定”按钮；此后，当你在这些单元格中输入数据时，如果输入的数据长度超过了单元格的宽度，Excel XP能够自动缩小字符的大小把数据调整到与列宽一致，以使数据全部显示在单元格中。如果你对这些单元格的列宽进行了更改，则字符可自动增大或缩小字号，以适应新的单元格列宽，但是对这些单元格原设置的字体字号大小则保持不变。 </p>
-</blockquote>
-<h3 id="7、快速输入多个重复数据"><a href="#7、快速输入多个重复数据" class="headerlink" title="7、快速输入多个重复数据"></a>7、快速输入多个重复数据</h3><blockquote>
-<p>在使用Excel XP工作表的过程中，我们经常要输入大量重复的数据,如果依次输入，无疑工作量是巨大的。现在我们可以借助Excel XP的“宏”功能,来记录首次输入需要重复输入的数据的命令和过程,然后将这些命令和过程赋值到一个组合键或工具栏的按钮上,当按下组合键时,计算机就会重复所记录的操作。使用宏功能时，我们可以按照以下步骤进行操作:首先打开工作表，在工作表中选中要进行操作的单元格；接着再用鼠标单击菜单栏中的“工具”菜单项，并从弹出的下拉菜单中选择“宏”子菜单项，并从随后弹出的下级菜单中选择“录制新宏”命令；设定好宏后，我们就可以对指定的单元格，进行各种操作，程序将自动对所进行的各方面操作记录复制。 </p>
-</blockquote>
-<h3 id="8、快速处理多个工作表"><a href="#8、快速处理多个工作表" class="headerlink" title="8、快速处理多个工作表"></a>8、快速处理多个工作表</h3><blockquote>
-<p>有时我们需要在Excel XP中打开多个工作表来进行编辑，但无论打开多少工作表，在某一时刻我们只能对一个工作表进行编辑，编辑好了以后再依次编辑下一个工作表，如果真是这样操作的话，我们倒没有这个必要同时打开多个工作表了，因为我们同时打开多个工作表的目的就是要减轻处理多个工作表的工作量的，那么我们该如何实现这样的操作呢？您可采用以下方法：首先按住“Shift”键或“Ctrl”键并配以鼠标操作，在工作簿底部选择多个彼此相邻或不相邻的工作表标签，然后就可以对其实行多方面的批量处理；接着在选中的工作表标签上按右键弹出快捷菜单，进行插入和删除多个工作表的操作；然后在“文件”菜单中选择“页面设置……”，将选中的多个工作表设成相同的页面模式；再通过“编辑”菜单中的有关选项，在多个工作表范围内进行查找、替换、定位操作；通过“格式”菜单中的有关选项，将选中的多个工作表的行、列、单元格设成相同的样式以及进行一次性全部隐藏操作；接着在“工具”菜单中选择“选项……”，在弹出的菜单中选择“视窗”和“编辑”按钮，将选中的工作表设成相同的视窗样式和单元格编辑属性；最后选中上述工作表集合中任何一个工作表，并在其上完成我们所需要的表格，则其它工作表在相同的位置也同时生成了格式完全相同的表格。</p>
-</blockquote>
-<hr>
-]]></content>
-      
-        <categories>
-            
-            <category> excel秘籍 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> excel秘籍 </tag>
-            
-        </tags>
-        
-    </entry>
+
     
-    <entry>
-      <title><![CDATA[Hubary]]></title>
-      <url>/2015/07/23/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="本页面为测试页面"><a href="#本页面为测试页面" class="headerlink" title="本页面为测试页面"></a>本页面为测试页面</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-]]></content>
-      
-        <categories>
-            
-            <category> hello world </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 测试 </tag>
-            
-            <tag> hello </tag>
-            
-        </tags>
-        
-    </entry>
+
     
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ES6/" rel="tag"># ES6</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/18/sheji/" rel="next" title="设计模式">
+                <i class="fa fa-chevron-left"></i> 设计模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
   
   
-</search>
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Hubary</p>
+              <p class="site-description motion-element" itemprop="description">男人一定要顶天立地！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#es6-guide"><span class="nav-number">1.</span> <span class="nav-text">es6-guide</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ECMAScript-6-学习笔记"><span class="nav-number">1.1.</span> <span class="nav-text">ECMAScript 6 学习笔记 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#let命令"><span class="nav-number">1.2.</span> <span class="nav-text">let命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#const命令"><span class="nav-number">1.3.</span> <span class="nav-text">const命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量解构赋值"><span class="nav-number">1.4.</span> <span class="nav-text">变量解构赋值</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解构赋值的用途"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">解构赋值的用途</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串的扩展"><span class="nav-number">1.5.</span> <span class="nav-text">字符串的扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数值扩展"><span class="nav-number">1.6.</span> <span class="nav-text">数值扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组扩展"><span class="nav-number">1.7.</span> <span class="nav-text">数组扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数扩展"><span class="nav-number">1.8.</span> <span class="nav-text">函数扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象扩展"><span class="nav-number">1.9.</span> <span class="nav-text">对象扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Symbol"><span class="nav-number">1.10.</span> <span class="nav-text">Symbol</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Proxy"><span class="nav-number">1.11.</span> <span class="nav-text">Proxy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reflect"><span class="nav-number">1.12.</span> <span class="nav-text">Reflect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set"><span class="nav-number">1.13.</span> <span class="nav-text">Set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map"><span class="nav-number">1.14.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Iterator"><span class="nav-number">1.15.</span> <span class="nav-text">Iterator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generator"><span class="nav-number">1.16.</span> <span class="nav-text">Generator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise"><span class="nav-number">1.17.</span> <span class="nav-text">Promise</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步操作和Async函数"><span class="nav-number">1.18.</span> <span class="nav-text">异步操作和Async函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Class"><span class="nav-number">1.19.</span> <span class="nav-text">Class</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hubary</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
