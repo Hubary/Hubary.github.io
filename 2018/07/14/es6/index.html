@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="ES6也称为Harmonyes-nextES2015,是该语言的最新定型规范,该ES6规范是在完成2015年6月,（因此ES2015）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="350个要点中的ES6概述">
+<meta property="og:url" content="http://liuhan.xin/2018/07/14/es6/index.html">
+<meta property="og:site_name" content="银河寒流">
+<meta property="og:description" content="ES6也称为Harmonyes-nextES2015,是该语言的最新定型规范,该ES6规范是在完成2015年6月,（因此ES2015）">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/tbKTICw.png">
+<meta property="og:updated_time" content="2018-07-14T05:57:30.135Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="350个要点中的ES6概述">
+<meta name="twitter:description" content="ES6也称为Harmonyes-nextES2015,是该语言的最新定型规范,该ES6规范是在完成2015年6月,（因此ES2015）">
+<meta name="twitter:image" content="https://i.imgur.com/tbKTICw.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://liuhan.xin/2018/07/14/es6/"/>
+
+
+
+
+
+  <title>350个要点中的ES6概述 | 银河寒流</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/hubary"><img style="position: absolute; top: 0; right: 0; border: 0;z-index:88888888" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJUAAACVCAYAAABRorhPAAAAGXRFWHRTb2Z0%0Ad2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAHplJREFUeNrsXXlUlde131wG%0AGRyYcQBkUlGIGqMxmmqMZjJxSByS9jXJW/HG5q2+Jq/NUJK13nr/vVXN2LRd%0Aq00TeH0vzaBN0qZpkhq1jjFOOIHGERQQQRDBAMp0eft3ON/t4eO7TPdyucDZ%0Aa33rgztw7+X73d/+nb332duvtbWVrMzPz8/5ozzb5M/+8mf/3xH9V9yECS/E%0AzZtHtYWFVL5tm/PBPT172kZMmkTRt99O1y9dopKtW8+82dj42D6iK3xXkzya%0ATUcLHw55tMqDWl39g7S5NL9egso4An5D9J8x0dHPJj3yCDVUVlL5P/5BDRUV%0A7cDSX8AKGD6coubMaXtfhw+feZPoiYNEFQqwzADTwPKA2dz9Az8hWn+5puZX%0AlXv30vCkJIq9445/Xg2TtXbxu6etubaWvjt5ksKnTaPkZcsm/Dwq6n9nEMXx%0AXcP4CJJHIPAnD4OFjS+Qn/yC+Wmo9A1T+Sn/cIOpAuUR9AZRVlxY2E8SH3yQ%0ArpeVUeXXX1PLjRuWbOTXxe+ettDERAqfPp1usCssPXDgLL/XJw8TXea7GuXR%0AJM+asbwEKvW625TD+HY7gfUa0QsTp0378fgVK6j2wgUq/ugjarp2rd/1FSxw%0A5EiKXbSImmpqqPzIkYJ1VVVrDre5wgYNrP51f63K4TAfzxH98tujR986/fbb%0A1NrUJNhBdXPdPfeVK7x24gSFjBtHcTffnPIzonf43cVKVzjM+GJoV+hdplLF%0AuqULlMew9UQ/S0tIWDv+4Yep8coVKv3iC7px+bJPMJZt2DCKYd2H91Wel3fu%0A1cbGJ4/80xU2aMbqX6YyjhZ5OJfnWUS/OldWln1p82YKHDWKIm+91WcYy9HQ%0AQLVnz1L4zTdT0r33pmaNHJktGStIM5Z3maortgowMZZwKb8geiZp+HB74sqV%0AYllfsWsXNbPGIh9grOC4OAqfMYNu8KKi7PDhs68TrdWM1X8hBbOmMjOVcTEa%0AXyL69fna2uzqY8coauZMiueVoS04uN9DDbAb5eV09eBBESRNWrw47aXoaM1Y%0A/cBUZhIxDn9Xq0GFsZ5OCQ+3j128mK5fvEiXd+70CX3lZ7NRWGoqRTBj4X2V%0A7N6tGasfQOUWsCZPmGCHeG9glij+9FNqrKjod2DB/ENCKGbBAmq6epXK8/PP%0AvVxbq8V7P7g/shDrDpMLbFIuSgNc4clz57KLPvqIX9VGEdOm+YRwh7Vcv051%0ABQU0MjOTEubPT30hOPgd7Qq9y1Tuu8KICLsRbkASGue+YqyeADIIK9XZs6nh%0A8mUqO3JEu0IvMpXbjFV47VrOlQMHaMTEiTT6rruoVQLYk4zVavEGzdFac46y%0AsaZGBEhHTZ1KKUuXpr0UGanFu5eZyi3GWseMNT401B6/fLnQWAg3OJqaPMJY%0A6idymM6tFvERao8IkRhHNgDivXT/fs1Y3gYVnq98M3sMrIyMDHviqlXiAhZ/%0A/DE1slh2J/lsRZ8O5WymaZViVIAFjBhBsQsXton3Y8cK1lVX2zWw+t79qcDq%0AlSt8kV3h8ePHs8/94Q+CpVCi0p24VWs3AWUVRFMRYBxWblaUzZw6RWEpKTRm%0A1qyU52y2t7Ur9CJTKc/pNWOljRljF4V+LNrLNm3qUa6wK0A5FPCk/+hHFHPL%0ALbT7qafaVRuq5Rfq30a4IXrePFF4yIx19rWWFu0KvcFUnmCsgsrKnLLt2yk4%0AJkZUa/ZEuLeawGVmKOMFJzCg5r/1Fk3m8+18VkHnajGAcEPtmTMUcfPNlPzA%0AA2kvhodr8e5NpvIEY40PC7MnrlghmAqFfnBD3RXs6srO7OoApIUMJFhNQQGN%0AYrd24ve/pz3MWGY0WOm2kLFjRRIaucJLublavHuLqTzBWBfq6rKv5uVRzNy5%0AlLh6NQWEhXWLqVpNTKUeKqC+YhC9N3MmXc7NpSl8+9SsrA5lF1aMdb20lK7s%0A2UNhycmobtC5Qm8zlScYKzUmxj7mnnvoenFxu1yheQXYKn9WkauiFhrqTgmo%0AC1u20Ia77xZvIDQigu7m26GtHLzCC1D0lZ8LtjJyhZGzZgmQFW/frhnL26By%0AF1jpycn2RETeKyvp4mefiUi3GVhmtlJ11EQG1AIJqGp2eeHs8o6wy9uiiPRA%0A5fDvwgU66X3YMIpdsIAaq6sh3s+9cv26zhX2tfvzlCs8VVSUAzD5BQUJodyT%0AUMNkBVAA0bvs8srY5U3n2xMQxe8iym7lEp3aDYV+587RqMxMSly0KPXnoaE6%0AV+hNpvIEYyWPHNlW3cDLerhCBCSpE6aKuOUWWnrwoLh9GwPqKLMTkBvELm88%0AAwpuEODC8yHW4f4ClauvslVnEfxhkZHCFWJRoQv9+gFU7gBrvc329E3Tp9vH%0A3n8/1RUW0oUNG/gSNXdgKYcCLIQPAhhEuevXt7uiiQyq5Rs3UjDfB7vBgPqU%0AddZVZjHjDdhcaCvLVeHo0c5dOqV79xb8orJyyEfevQoqdxkrKSzMHr9smdi/%0AB8Yih8Mp1B2dxKmMcxQz2KrNmwWgdrz4otBZ97KLLGbm2sRMGOCCrToDl43F%0Ae2hSkrPQ7+I33wx5xvI6qNwF1pT0dPv41atFvKj4k09EBN6sqdRYVatyJZcx%0AoMBUm9glQrDjvn9jbQSQvcWuzN8CVGpBvp+FiDfOCH3E3Hln277Co0cL1l+7%0ANmQZy9YfL+qOeD9x8mR24XvvUWtLi8gVWoUajAuvujKbdH3QU0cloO5jlsKK%0A8NSf/iRePJKZzMYAs2qwYIkAxZrr6kTkfcSECTRu7tyU5wMDh6x47xemcltj%0AIY4VGysYq6GqisoYKGpTELO+ckiQ/IBZCWJ9MzMVVoAQ69BUv0PsicH1MDMZ%0Aou0f8ErRAKSIZ7EGy4W7ZN3lb8FaqvmHhopuM9g9NFTFe7+Cyh1gvRIY+MyU%0AzMw1Y1lkf8dgQdkMmYKiDsX94cqFY1XIwBkmRTpCDF8ywPCYf5FaywiSfs4a%0AC29gBd8ey887yey2V6Z0bCaKMRt6N0C8o6K1ZNeugnVXrw4pV9jvoHKXsVDo%0Al/DQQ85cYUt9vUt9hcOfgZPMDHedGepbdnuoWHhEAmobs1EIn5OYxTYyWHF7%0AHN9/nAH1NQMq0IXfsrKQ+HgRW0N/rEsHDw4pxvIJULkLrIypU0USur64mIoZ%0AKI2yKYjDAlgtptXgCgmovzNoDjF4YPgdzDWa78/j23ZIQKk9h7oCFSwwPFwU%0A+mEDbdmhQwW/qKoaEoxl85U30lvxnoVCv2PHss+glKWhQZQBG0FRc6mwup16%0AOANniYxXIcl8jMFjMwEKgh76ayTrra4KA60MYLp2/DgFjxlDcdOnpzxLNCQK%0A/XyGqTzBWJMSE0WusMFoClJe3g6lZvGOyHukBA8QG8iAekQCygiMAmQNfP4b%0Au8NqGSBVE8/mb6XVf83ZFIQXFZfz8s690tAwqHOFPgcqd4D1sr//MxlTpqxB%0Ashf7+C5+/nm7v+uwEPCq1lohNRQEPICFUEMF/4y0UBWfryqgslkERzsD1nBe%0AYSKOJTbS7tgxqONYPgkqdxlLNAVZtUpUN1zevZuaqqvbMRZZ+NW72BWmsYCH%0AGwRD3ZqVRTkMhFoGZ3eCombWsvrvDYuJoYiZMwd9UxCfBZW7wJo6Y4Z97JIl%0AVH/+vMgVorKATKJNBRaYCrVXB9avp+/LZPSHDACbKYRg6yTS7ira3g5YsbEU%0Ah1wh663SffsGZa7Q5suId0e8Hzt0KPvUm29SS1MTRc+e3U5Qq+g0Iu+oVMhj%0AQEWxKEdcqmTLFucqz09xn0a8S426m696ZyIe7Fl14EBbWic9fVCKd58GlbvA%0AKqypyYYWwm6YtLVrKYjdj9k9OZvCK1exkp9znvWUv/IPciji/gHWXtg40Uzt%0A0zlqXZbLz+NwiKZrpZ99JvqQjps7Ny1rxIhBVZrs86ByF1gnT5/OLmKA4E9E%0Ayn2F6oc3hxqus4baxitIgNFmAhVWistlRH7cXXfRTay7mqhjfrCzWnfDxC4d%0ABtfIyZMpft68lMHUFMSnNZXHVoUo9IuMdDYFKUNTEHZD5pIZ8wrRYQqUGoDa%0Az24SxX5YKW596in6lsW9GhxVk9hdrQrBVpG33TaomoIMCKZyl7F+jo5+NTU5%0AV/bvF0v70QsXOp9sc4FQlRJiFUAhUIp0DlI8sJnMVihdVjWWowcaC4IdTUFQ%0AcZGybNmgaAoyoJjKE4yVGBJiT3jwQbGsr9izR6wKzTud1UK/EBbuy3k1CEBt%0Akakc5At/wCAzAqQonznI7LWXwWbFWF2GG/jjIAktcoWlpQO+KciABJW7wMrI%0AzBRxLJErRFOQ6up2F1qNvOPqZTIb1TF4EHmHrnpY5gs/ZneKioZnq6raSmgi%0AIzvkCM2lMq7cIMzZFMQYIDBAm4IMKPfnKVd4PD8/+1xOTltTkKlTO+7vU/45%0AOI4xC6H0BTrKABRKZuAC42RK5zyDy9VYru7212qpqxOzdMKSkmjMzJkpz/r5%0ADchww4AFlbvAOl1UlF22dasIESQ9/jgFx8a2u+g2E7Bw9ZC6MRLQYK2x/PvK%0AjRvF4/Yw8EawG5zBrIbSGlcVo9RFuAGdZoo++EC0sBwzY0baQKwgHbDuzxOu%0A8FUU+mVkrIlbsEDs40PsSN1IYV4FNsk4VWlubjs3+DmDDM9ZuG6ds9AP2+q/%0AuPtu5+5ntVymMxdoGLbXxyJXyKvUkp07B5QrHBSgcldjIVeYgKYg5eVUyeK9%0A+bvvLMdaGLQXitJjFu+GG6xn4BiMtZcZC0nopfw76rDOyHCDVbsi6gJgKJmJ%0AMJqCHDo0YMT7gHZ/Hgs3YIBAfj5Fz5lDAJctNLTDJgo14l5fUECHGDxYDeYz%0AaBYxQ8GMHdBGuTLq4S0nQ5F1T1KzYSvalX37aHha2oBqCjJomMoTjJUaHW0f%0AbTQF2bWr3Q5oq3IZ4/gp/w9QJoOtX0YJMmqwNs6cKSL0/i7iX90pm3E2BeG/%0AVV9Sgpp3n2esQQcqd4GVnpraVujHrrCENRYGCJjr3c3tHtfKkAJaFOGFVjKw%0AwGAnZTWpFaBc9Rt15Q7FAAEU+vHroNDv5fp6ny30G5SgcgdYr9hsYsNqzPz5%0AVMfiHZPAzIylAgvnSbIZCLZ3fcmAhKayqrWymsRpxV6uwIUW4dH8vuAWi7dt%0A81lgDVpQuctYmKWTsHq1YKpyNAVhNrIClnFO4sdGs9tDVN0qNYN9hojEA3Cl%0AW7a0c4mdtTAyXwXotIhZs3w6VzioQeUWY/n7P3PT9Olrxtx3nwg3FGF1J3s3%0AkEXIwXzVjN/RJGQuC/lMZjPD8uUOnQBlAWBTzl0V+qFVpGgKUl2N3g0+V+g3%0AaFZ/nl4VvtDS8qu83NzsU7/8pcjNxbLb8QsIaBdtV1eEVmkZmAGocmaoz9g1%0AolwZv0fIQj+rrfVdlc5gLyH2OPoFBlJ0WprPFfoNelC5BSzZgxTzCmNZJKc8%0A8QQNi4pq3/VFcV9mNxbPLs8AFDannuAVIgKnJO/Di2KMSlNPo+/8cbCxo3zT%0AJlH3Hj9vnk91TR4SoHIXWCeOH88ufPddkSscpRT6qdFxK+EdI/OCu1hnYUc0%0ASmgWyJgWAIZepA/yQiDJIq1jFccyx7Oa6+vpu9OnRRxr7OzZPtMUZMiAyl1g%0AnSooyMZewvCMDEp69FFnrtDPxQoPh9HxbyKDZhIfP5Bpna0MstlZWTRN6qxb%0AZL6wpYtAaYc3zx/n2qlTVPzhhyJvGJuZmeoLkykGvVD3pHh/TeYK4bLQ0a9E%0ANgVRV3pquAHIRC17hiLS/8GAQv3VDL4NEXgETQEwgO391NR2wVKrchlXXf3C%0Axo8XZTO+0BRkSILKrVUhCv2Cg0U9FpqCXMEAgbo654qQFDdmCHEkn8cyEFEq%0AM4sBNF0C6kPWWWCz2/i2eewWP+Pfy2S4obPYlQo21dWExseLbf+IY/XnAIEh%0ACyp3gYWmIMgT1hcVUfHGjdRUW+v8u66mTkxn8NzO4DGEO6Lw6DLz2MGDYgLF%0AH5mpkFe0uQCNVfDUHH5AUxBjXyEDt1+aggwpTeVJjSWagvz2t+RobBT9Ps3/%0AVDXkYKDy6Pr1orHtJwyoZgYUmoSsZp0FQOH2awwoc2DVVTc/V4lpNAWpyc9v%0A27Q6bVq/hBuGNFN5grEmjR9vT8T0r8pKKv3b30Sk2yry3mICBpqBLJcN1RAM%0A3f7UU5buLl5G4lH5oO5H9O+CsYymIGJeIZqC3LjhtZSOBpWbwHrV3/+ZKZMn%0Ar0EcC30XLn35pWWu0MxAs9gNwh2ekIAii3TMvexWkd5RrYBBhQZsLQwWqzCG%0A6ioRasAUe283BdGg8hBjYYBAgtEUBLnC6uouZzhjM+phdnvmKapBCouhhAZM%0AhpxhhpxWcYSfc4hXka4qINRVomgKwn8HBYjeagqiQeUpxrLZns7EAIElS0S0%0Au2jDBmqVM6HVcIMrgBlXMkABFEqS0XsUWssQ6AiWwh2+GxnZIRntKm8o9BUi%0A9xgg4IWmIENaqHtSvD/vcPw6D01B3nhDtOOOnjtX5AzJRdTdFRDARgAUymg+%0AQqM1Pqtv5Cy7P1RCmMHYWTtu0RRk3762zskTJ/a5eNdM1QeucPKkSXbMKoTL%0AufjnPwsR79cJUtXarCeqqoQo/5gBhT2F6rffXN6MGi4U7aEddwB1XpsFCwgJ%0AaQuQotAvP7/PNJZmqj4IN3x76lQ23B8Sv8YAgVYTY1mldbDSA6Dg9gxA4Xm4%0AzcxMCKZiuz16ahmg7Iqxmo2mIOnpbQMEgoL6JFeoQdVXwDpzJrvkL38R1ZoJ%0AjzxCwdHRlj2yVHaplBUMAJEBRLjCRw8eFDrKoQCqkEH3NTMUpoSZ5/CoSWlz%0AxQP2FaKDs8gVTpmS2heuUIOqD4FVWFOTU8laBnv40O/Typ+aE9BYDSIYijr3%0A+evWOaPt2B2NF0QpDYY2oU5rHz+2UO6MbnFxWCWjsQUNO6GR0umLpiBaU3lB%0AYzkHCJSVUeXu3c5WkVYTv5plDAs7nQ37Sg5oQlUDpn4hvYOxvcghjparxO3K%0AtFW1mrQznRWWmNg2bBxNQQ4c8Fi4QTOVFxjrQn29KPSLmTePxj/2GAWOGtWu%0AbEZdEeLYz24tOzJSgGWL7PGuAup9BhSGN+G2OOkW/ZVBTXP5caP49s5qtGB1%0ARUVUsW2bmE6RuHBh2osRER5hLA0qLwErPy8v+9w774hc4Sh2O8YfsRocgAO5%0AQbAPIu7TTYCqKiigdF5dGhYnAYQXvYMfhyn2izZuFEDrCljNtbWiPxaANXrG%0ADI+EG7T787IrnBQfb09AR7+qKrr0xRciV+gwuUIVoaJnA+sqAAqVDVcYUN9n%0ATTWGb0evLKPnO8ag3M+AMiaD/QXgk1O/zMMxreq0nAMErlwRucJXGxt7nSvU%0AoPIysFDol4FcIQt35ArRFMRVQxDj6mFf4SVs7eIDIh0DmQ4zoD6XE8DwfABq%0AhgQUwIe0Dl44DFu6WOhXm8b5Wu2ODkNn5oULBdCLt2/vdRxLg6qfGCsZo3tX%0ArRJzCiHeUbJiHnVi3gmNUAKmUiCG9QEDx1jdGYCCfSFFPd6EWlrzpTIGpbPR%0AcsFxcRQ+Y4ZbAwS0puqvcENdXXYNi/eoW2+leF4Z2oKDLUW7ispmWfOOcuRk%0ABhge94DCUDjQzggxLZTWrJQ5RCLX7bjNGgtZgKsHDoj4WtLixb1qCqKZqp8Z%0AKzUiwj76vvvoxsWLorpBHQRgNVJuIgMolUU69hCiinSaBNS7zES4Eo/JXqTI%0AGUJ34b4/S5Yy3oB5K1mHz2OziYa7qG7AsPGeNgXRoPIBYE1GUxAU+rGWKfn0%0AU2dTELPGUqPm07KyRAAUoEGt+0UGjdh+zwz2uNLkVoh7vi9IeXErUFnmCpk9%0AxbBxFPrl5597uba2W+Jduz8fcIWnCguzSz75hK+0P0XIcINVDEtF5inWTcWs%0ArVCaXClXeWLes9xXCIO4R/gB7rCFOvZ/MIshc0qn5cYN0aRkZGYmJdxxR+oL%0AISHdyhVqpvIRxnoV4j08XLQxwrL+8vbt4uyq/srcIwt1WKvkrEIw1BbZ6x3u%0AEBrsExliMDNVZ9PAjA+CYG3k7NndbgqimcpHGOt5dPT77rucqoMHaUR6Oo1m%0AEKAeS73Q/hboDJBhg9UKoN6TW+wflbdBX13lo4Wsm7aZt9qbzyjuu5afT6Nu%0AuolSli415wpVzyrekgaVDwHrOTQFkYV+oinIggVkCwzssAvaHH0Pk1UNhobC%0AFrDVGzcKoY54FjQX+sBPkY1B1Befw6vHVFk+01kfB9EUZPdu0RQkasIENfI+%0AzASuAO3+fNQVZmRkiJp3sfpivYUIvIpSs3i3MbDQ4BYBUmyjv4O1VaGMZ8EQ%0AdrhPNmZ7f+ZMIb4Xyd3T0GSbEPfi21Q2JCvxPnx42wCB6moqP3asYH119ZrD%0Aba6wQX5BGjWofBhYk5KS7NilU3/hgtBY5tiSOfJu7Ij+VxbXCHi+ERkpGoPc%0AzMBZLHOHYC0kqgGwqXy7qINXWnN31oBNfiARw4qaM0eMPCnasuXs6w7Hkwys%0AcoNxNah8HFhpo0e3iXdmqvKvvhJb7cnkU81aaQlrKVQx7JC17HfK0AO0FlaE%0AS2SOEG4SAr6V7zMv4fxdMJVh/sHBolUk6t8h3t9wONYcksDSmsrHxXvBlSs5%0ACIpiRwzYwYxOq5ADNkYwgwgXqAIKsSwj6Wy8GWz5aqXOB19aGcINtadPi0K/%0A5CVL0rLCw/9nJhGmdAZqphoo4YawMPu4FSvExlAxQED2bnBYBEgNdC6TaZoN%0AElD3yZQO2Ookrw7nyG4z/5eaSjdYawVRx2qGrgytIsPlAIGy3NwzvyF6LEBf%0Aau8ylgRWuxijPDe7eh4Y69W6OhqRn28f9+CD4kKWMCia+DYrV2P88U3sNlF5%0AUKEwFAAF8d4gdziDzRDHKmdQ9cagqzBlFT1IE6OiJjyfm/tHzVQDTWPFxtoR%0Aw0K3mcpduzrsblZzhYZfRUrnezLSDqGOiV+Ivv+IBT2Y6j3ZFyuQrPuWdvl5%0AkCtMSxNdk7Fa1aAagMBKT05uK/SrqKCLSlOQ7gALTdYg0G+Vrm8P66/89evb%0ABVNtPQSVYSj0Q2xNg2oAAus1f/9nMtLT12D1VX/+vGgKQp0wlgGupayx1IYf%0AmK+zX25EDexOOKEbBsbSoBrAjJUycqQo9MOyvoJdYaOst7IS78YxWQ5kQveY%0AWtlgzRyf6u74OJefSYNqADOWzfb0TdOn28fcf79grOING6hFNgVxUOdNaa3S%0APn5k3TlGg2qoAUvOKxy3dGlbfm7nTnI4HE5gtZJ1aYt5pK+rCoXemA5+DvAA%0A6XNyXmHV4cNiX2Gy3U7DoqOdF9cKmebxJa6GW2pQDXFgfXvyZPaF998nR3Oz%0AGDauXmCr2veuOiC7xbra/Q0uV5gaE9M2rxD797ZuFbt1uv26mqk0Y1kxVmF1%0AdU7lN99QaGKimKfjqhmI1eGxL4VmqkEq3kND7eMeeqgtV/j11yKV4i3TTDVY%0AxXt9fXZNXh5Ff+97lPjDH4o6c699GTRTDW7Gmjh2rB2VmvXFxVSxY4cGlTbP%0AAGtSQoI9Xu7SMZqCaPenzS1XeKasLKd882YKHDmSImfN0kylzXOMlTx8eFtT%0AEGYqiHdsvdJMpc29cENtrWgKgrqnscuWiVIVzVTa3Gas1+VO6DGLF1N9SYko%0A9NNMpc0txnq2LUCafTU3l2Lmz6eUtWuduUINKm1uAevk2bPZqHOHhcumINr9%0AafOIK0yJjBSlycgVolMxRp5optLmFmOJpiD794syYARJNVNp8xhjjQ8JEblC%0A5wCBxkbNVNrcY6wL16+LcAPE+/jHHxcDvjWotLkNrOP5+dmFOTmCpdwR79r9%0AaVfYwRWmjRljx+QvNAUp+/vfe5wr1EylGasDYxVUVuZgJTgsKoqibrtNM5U2%0AzzFWEpqCrFzpzBVipJtmKm3uhRswQCAvT7BVPIMLM5g1U2nzCGOlRkfb4+65%0Ah66XlFDFzp0aVNo8A6xJKSltkffKSir99NNOd+lo96ddYbdc4ekLF3JK//pX%0A0S0ZTc40U2nzGGMljxplj1+9uq0pyI4dzqYgmqk0Y/VevNfW5lQfOiRGi4xe%0AvJj8/P01U2lzm7GC3mDGSgwNfXLc8uUiVwjx3trSoplKW+8Z62dEbxbV179d%0AfeSIaHudvGYNBUVFaVBpcxtYb5z69tu3Lrz7boemINr9aeupK2zXkeg3RD9N%0AiI39sZErxAABDSptPQVWh/ZWbwUGPp+cmfnvcYsWiZaPGlTaegosqxZXtreI%0Ano8ODf2P+BUrNKi09RhY5rOzTWg2UVbCtGnPug2q/x6o/7hOfu/ufVY/9/S2%0A3jzGG+dHO45X9iPrgabtWq7/geglt0GlbXCTlgWwuuo926pBpa03wOqsGZ8G%0AlbZeAYsswOQEjAaVtt7IUD/qpIe/BpU2j69vNKi0eQJcmqm09S3INKi0eR5h%0AGlTaNKi0DVxQadOmQaVNg0qbBpU2bRpU2vrP/l+AAQBZTVVRokJ0LQAAAABJ%0ARU5ErkJggg==" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">银河寒流</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liuhan.xin/2018/07/14/es6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hubary">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="银河寒流">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">350个要点中的ES6概述</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-14T13:30:50+08:00">
+                2018-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  ES6也称为Harmonyes-nextES2015,是该语言的最新定型规范,该ES6规范是在完成2015年6月,（因此ES2015）
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="ES6-Overview-in-350-Bullet-Points"><a href="#ES6-Overview-in-350-Bullet-Points" class="headerlink" title="ES6 Overview in 350 Bullet Points"></a>ES6 Overview in 350 Bullet Points</h1><p>My <a href="https://ponyfoo.com/articles/tagged/es6-in-depth" title="ES6 in Depth on Pony Foo" target="_blank" rel="noopener">ES6 in Depth</a> series consists of 24 articles covering most syntax changes and features coming in ES6. This article aims to summarize all of those, providing you with practical insight into most of ES6, so that you can quickly get started. I’ve also linked to the articles in ES6 in Depth so that you can easily go deeper on any topic you’re interested in.</p>
+<p>I heard you like bullet points, so I made an article containing hundreds of those bad boys. To kick things off, here’s a table of contents with all the topics covered. It has bullet points in it – <strong>obviously</strong>. Note that if you want these concepts to permeate your brain, you’ll have a much better time learning the subject by going through the <a href="https://ponyfoo.com/articles/tagged/es6-in-depth" title="ES6 in Depth on Pony Foo" target="_blank" rel="noopener">in-depth series</a> and playing around, experimenting with ES6 code yourself.</p>
+<p><img src="https://i.imgur.com/tbKTICw.png" alt="It&#39;s showtime!"></p>
+<h1 id="Table-of-Contents"><a href="#Table-of-Contents" class="headerlink" title="Table of Contents"></a>Table of Contents</h1><ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#tooling">Tooling</a></li>
+<li><a href="#assignment-destructuring">Assignment Destructuring</a></li>
+<li><a href="#spread-operator-and-rest-parameters">Spread Operator and Rest Parameters</a></li>
+<li><a href="#arrow-functions">Arrow Functions</a></li>
+<li><a href="#template-literals">Template Literals</a></li>
+<li><a href="#object-literals">Object Literals</a></li>
+<li><a href="#classes">Classes</a></li>
+<li><a href="#let-and-const">Let and Const</a></li>
+<li><a href="#symbols">Symbols</a></li>
+<li><a href="#iterators">Iterators</a></li>
+<li><a href="#generators">Generators</a></li>
+<li><a href="#promises">Promises</a></li>
+<li><a href="#maps">Maps</a></li>
+<li><a href="#weakmaps">WeakMaps</a></li>
+<li><a href="#sets">Sets</a></li>
+<li><a href="#weaksets">WeakSets</a></li>
+<li><a href="#proxies">Proxies</a></li>
+<li><a href="#reflection">Reflection</a></li>
+<li><a href="#number"><code>Number</code></a></li>
+<li><a href="#math"><code>Math</code></a></li>
+<li><a href="#array"><code>Array</code></a></li>
+<li><a href="#object"><code>Object</code></a></li>
+<li><a href="#strings-and-unicode">Strings and Unicode</a></li>
+<li><a href="#modules">Modules</a></li>
+</ul>
+<p>Apologies about that long table of contents, and here we go.</p>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><ul>
+<li>ES6 – also known as Harmony, <code>es-next</code>, ES2015 – is the latest finalized specification of the language</li>
+<li>The ES6 specification was finalized in <strong>June 2015</strong>, <em>(hence ES2015)</em></li>
+<li>Future versions of the specification will follow the <code>ES[YYYY]</code> pattern, e.g ES2016 for ES7<ul>
+<li><strong>Yearly release schedule</strong>, features that don’t make the cut take the next train</li>
+<li>Since ES6 pre-dates that decision, most of us still call it ES6</li>
+<li>Starting with ES2016 (ES7), we should start using the <code>ES[YYYY]</code> pattern to refer to newer versions</li>
+<li>Top reason for naming scheme is to pressure browser vendors into quickly implementing newest features</li>
+</ul>
+</li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="Tooling"><a href="#Tooling" class="headerlink" title="Tooling"></a>Tooling</h1><ul>
+<li>To get ES6 working today, you need a <strong>JavaScript-to-JavaScript</strong> <em>transpiler</em></li>
+<li>Transpilers are here to stay<ul>
+<li>They allow you to compile code in the latest version into older versions of the language</li>
+<li>As browser support gets better, we’ll transpile ES2016 and ES2017 into ES6 and beyond</li>
+<li>We’ll need better source mapping functionality</li>
+<li>They’re the most reliable way to run ES6 source code in production today <em>(although browsers get ES5)</em></li>
+</ul>
+</li>
+<li>Babel <em>(a transpiler)</em> has a killer feature: <strong>human-readable output</strong></li>
+<li>Use <a href="http://babeljs.io/" title="Babel JavaScript Compiler" target="_blank" rel="noopener"><code>babel</code></a> to transpile ES6 into ES5 for static builds</li>
+<li>Use <a href="https://github.com/babel/babelify" title="babel/babelify on GitHub" target="_blank" rel="noopener"><code>babelify</code></a> to incorporate <code>babel</code> into your <a href="https://ponyfoo.com/articles/gulp-grunt-whatever" title="Gulp, Grunt, Whatever on Pony Foo" target="_blank" rel="noopener">Gulp, Grunt, or <code>npm run</code></a> build process</li>
+<li>Use Node.js <code>v4.x.x</code> or greater as they have decent ES6 support baked in, thanks to <code>v8</code></li>
+<li>Use <code>babel-node</code> with any version of <code>node</code>, as it transpiles modules into ES5</li>
+<li>Babel has a thriving ecosystem that already supports some of ES2016 and has plugin support</li>
+<li>Read <a href="https://ponyfoo.com/articles/a-brief-history-of-es6-tooling" title="A Brief History of ES6 Tooling on Pony Foo" target="_blank" rel="noopener">A Brief History of ES6 Tooling</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="Assignment-Destructuring"><a href="#Assignment-Destructuring" class="headerlink" title="Assignment Destructuring"></a>Assignment Destructuring</h1><ul>
+<li><code>var {foo} = pony</code> is equivalent to <code>var foo = pony.foo</code></li>
+<li><code>var {foo: baz} = pony</code> is equivalent to <code>var baz = pony.foo</code></li>
+<li>You can provide default values, <code>var {foo=&#39;bar&#39;} = baz</code> yields <code>foo: &#39;bar&#39;</code> if <code>baz.foo</code> is <code>undefined</code></li>
+<li>You can pull as many properties as you like, aliased or not<ul>
+<li><code>var {foo, bar: baz} = {foo: 0, bar: 1}</code> gets you <code>foo: 0</code> and <code>baz: 1</code></li>
+</ul>
+</li>
+<li>You can go deeper. <code>var {foo: {bar}} = { foo: { bar: &#39;baz&#39; } }</code> gets you <code>bar: &#39;baz&#39;</code></li>
+<li>You can alias that too. <code>var {foo: {bar: deep}} = { foo: { bar: &#39;baz&#39; } }</code> gets you <code>deep: &#39;baz&#39;</code></li>
+<li>Properties that aren’t found yield <code>undefined</code> as usual, e.g: <code>var {foo} = {}</code></li>
+<li>Deeply nested properties that aren’t found yield an error, e.g: <code>var {foo: {bar}} = {}</code></li>
+<li>It also works for arrays, <code>var [a, b] = [0, 1]</code> yields <code>a: 0</code> and <code>b: 1</code></li>
+<li>You can skip items in an array, <code>var [a, , b] = [0, 1, 2]</code>, getting <code>a: 0</code> and <code>b: 2</code></li>
+<li>You can swap without an <em>“aux”</em> variable, <code>[a, b] = [b, a]</code></li>
+<li>You can also use destructuring in function parameters<ul>
+<li>Assign default values like <code>function foo (bar=2) {}</code></li>
+<li>Those defaults can be objects, too <code>function foo (bar={ a: 1, b: 2 }) {}</code></li>
+<li>Destructure <code>bar</code> completely, like <code>function foo ({ a=1, b=2 }) {}</code></li>
+<li>Default to an empty object if nothing is provided,  like <code>function foo ({ a=1, b=2 } = {}) {}</code></li>
+</ul>
+</li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-destructuring-in-depth" title="ES6 Destructuring in Depth on Pony Foo" target="_blank" rel="noopener">ES6 JavaScript Destructuring in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="Spread-Operator-and-Rest-Parameters"><a href="#Spread-Operator-and-Rest-Parameters" class="headerlink" title="Spread Operator and Rest Parameters"></a>Spread Operator and Rest Parameters</h1><ul>
+<li>Rest parameters is a better <code>arguments</code><ul>
+<li>You declare it in the method signature like <code>function foo (...everything) {}</code></li>
+<li><code>everything</code> is an array with all parameters passed to <code>foo</code></li>
+<li>You can name a few parameters before <code>...everything</code>, like <code>function foo (bar, ...rest) {}</code></li>
+<li>Named parameters are excluded from <code>...rest</code></li>
+<li><code>...rest</code> must be the last parameter in the list</li>
+</ul>
+</li>
+<li>Spread operator is better than magic, also denoted with <code>...</code> syntax<ul>
+<li>Avoids <code>.apply</code> when calling methods, <code>fn(...[1, 2, 3])</code> is equivalent to <code>fn(1, 2, 3)</code></li>
+<li>Easier concatenation <code>[1, 2, ...[3, 4, 5], 6, 7]</code></li>
+<li>Casts array-likes or iterables into an array, e.g <code>[...document.querySelectorAll(&#39;img&#39;)]</code></li>
+<li>Useful when <a href="#assignment-destructuring">destructuring</a> too, <code>[a, , ...rest] = [1, 2, 3, 4, 5]</code> yields <code>a: 1</code> and <code>rest: [3, 4, 5]</code></li>
+<li>Makes <code>new</code> + <code>.apply</code> effortless, <code>new Date(...[2015, 31, 8])</code></li>
+</ul>
+</li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-spread-and-butter-in-depth" title="ES6 Spread and Butter on Pony Foo" target="_blank" rel="noopener">ES6 Spread and Butter in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="Arrow-Functions"><a href="#Arrow-Functions" class="headerlink" title="Arrow Functions"></a>Arrow Functions</h1><ul>
+<li>Terse way to declare a function like <code>param =&gt; returnValue</code></li>
+<li>Useful when doing functional stuff like <code>[1, 2].map(x =&gt; x * 2)</code></li>
+<li>Several flavors are available, might take you some getting used to<ul>
+<li><code>p1 =&gt; expr</code> is okay for a single parameter</li>
+<li><code>p1 =&gt; expr</code> has an implicit <code>return</code> statement for the provided <code>expr</code> expression</li>
+<li>To return an object implicitly, wrap it in parenthesis <code>() =&gt; ({ foo: &#39;bar&#39; })</code> or you’ll get <strong>an error</strong></li>
+<li>Parenthesis are demanded when you have zero, two, or more parameters, <code>() =&gt; expr</code> or <code>(p1, p2) =&gt; expr</code></li>
+<li>Brackets in the right-hand side represent a code block that can have multiple statements, <code>() =&gt; {}</code></li>
+<li>When using a code block, there’s no implicit <code>return</code>, you’ll have to provide it – <code>() =&gt; { return &#39;foo&#39; }</code></li>
+</ul>
+</li>
+<li>You can’t name arrow functions statically, but runtimes are now much better at inferring names for most methods</li>
+<li>Arrow functions are bound to their lexical scope<ul>
+<li><code>this</code> is the same <code>this</code> context as in the parent scope</li>
+<li><code>this</code> can’t be modified with <code>.call</code>, <code>.apply</code>, or similar <em>“reflection”-type</em> methods</li>
+<li><code>arguments</code> is also lexically scoped to the nearest normal function; use <code>(...args)</code> for local arguments</li>
+</ul>
+</li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-arrow-functions-in-depth" title="ES6 Arrow Functions on Pony Foo" target="_blank" rel="noopener">ES6 Arrow Functions in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="Template-Literals"><a href="#Template-Literals" class="headerlink" title="Template Literals"></a>Template Literals</h1><ul>
+<li>You can declare strings with <code>`</code> (backticks), in addition to <code>&quot;</code> and <code>&#39;</code></li>
+<li>Strings wrapped in backticks are <em>template literals</em></li>
+<li>Template literals can be multiline</li>
+<li>Template literals allow interpolation like <code>`ponyfoo.com is ${rating}`</code> where <code>rating</code> is a variable</li>
+<li>You can use any valid JavaScript expressions in the interpolation, such as <code>`${2 * 3}`</code> or <code>`${foo()}`</code></li>
+<li>You can use tagged templates to change how expressions are interpolated<ul>
+<li>Add a <code>fn</code> prefix to <code>fn`foo, ${bar} and ${baz}`</code></li>
+<li><code>fn</code> is called once with <code>template, ...expressions</code></li>
+<li><code>template</code> is <code>[&#39;foo, &#39;, &#39; and &#39;, &#39;&#39;]</code> and <code>expressions</code> is <code>[bar, baz]</code></li>
+<li>The result of <code>fn</code> becomes the value of the template literal</li>
+<li>Possible use cases include input sanitization of expressions, parameter parsing, etc.</li>
+</ul>
+</li>
+<li>Template literals are almost strictly better than strings wrapped in single or double quotes</li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-template-strings-in-depth" title="ES6 Template Literals on Pony Foo" target="_blank" rel="noopener">ES6 Template Literals in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="Object-Literals"><a href="#Object-Literals" class="headerlink" title="Object Literals"></a>Object Literals</h1><ul>
+<li>Instead of <code>{ foo: foo }</code>, you can just do <code>{ foo }</code> – known as a <em>property value shorthand</em></li>
+<li>Computed property names, <code>{ [prefix + &#39;Foo&#39;]: &#39;bar&#39;  }</code>, where <code>prefix: &#39;moz&#39;</code>, yields <code>{ mozFoo: &#39;bar&#39; }</code></li>
+<li>You can’t combine computed property names and property value shorthands, <code>{ [foo] }</code> is invalid</li>
+<li>Method definitions in an object literal can be declared using an alternative, more terse syntax, <code>{ foo () {} }</code></li>
+<li>See also <a href="#object"><code>Object</code></a> section</li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-object-literal-features-in-depth" title="ES6 Object Literal Features in Depth on Pony Foo" target="_blank" rel="noopener">ES6 Object Literal Features in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h1><ul>
+<li>Not <em>“traditional”</em> classes, syntax sugar on top of prototypal inheritance</li>
+<li>Syntax similar to declaring objects, <code>class Foo {}</code></li>
+<li>Instance methods <em>– <code>new Foo().bar</code> –</em> are declared using the short <a href="#object-literals">object literal</a> syntax, <code>class Foo { bar () {} }</code></li>
+<li>Static methods <em>– <code>Foo.isPonyFoo()</code> –</em> need a <code>static</code> keyword prefix, <code>class Foo { static isPonyFoo () {} }</code></li>
+<li>Constructor method <code>class Foo { constructor () { /* initialize instance */ } }</code></li>
+<li>Prototypal inheritance with a simple syntax <code>class PonyFoo extends Foo {}</code></li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-classes-in-depth" title="ES6 Classes in Depth on Pony Foo" target="_blank" rel="noopener">ES6 Classes in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="Let-and-Const"><a href="#Let-and-Const" class="headerlink" title="Let and Const"></a>Let and Const</h1><ul>
+<li><code>let</code> and <code>const</code> are alternatives to <code>var</code> when declaring variables</li>
+<li><code>let</code> is block-scoped instead of lexically scoped to a <code>function</code></li>
+<li><code>let</code> is <a href="https://ponyfoo.com/articles/javascript-variable-hoisting" title="JavaScript Variable Hoisting on Pony Foo" target="_blank" rel="noopener">hoisted</a> to the top of the block, while <code>var</code> declarations are hoisted to top of the function</li>
+<li>“Temporal Dead Zone” – TDZ for short<ul>
+<li>Starts at the beginning of the block where <code>let foo</code> was declared</li>
+<li>Ends where the <code>let foo</code> statement was placed in user code <em>(hoisiting is irrelevant here)</em></li>
+<li>Attempts to access or assign to <code>foo</code> within the TDZ <em>(before the <code>let foo</code> statement is reached)</em> result in an error</li>
+<li>Helps prevent mysterious bugs when a variable is manipulated before its declaration is reached</li>
+</ul>
+</li>
+<li><code>const</code> is also block-scoped, hoisted, and constrained by TDZ semantics</li>
+<li><code>const</code> variables must be declared using an initializer, <code>const foo = &#39;bar&#39;</code></li>
+<li>Assigning to <code>const</code> after initialization fails silently (or <strong>loudly</strong> <em>– with an exception –</em> under strict mode)</li>
+<li><code>const</code> variables don’t make the assigned value immutable<ul>
+<li><code>const foo = { bar: &#39;baz&#39; }</code> means <code>foo</code> will always reference the right-hand side object</li>
+<li><code>const foo = { bar: &#39;baz&#39; }; foo.bar = &#39;boo&#39;</code> won’t throw</li>
+</ul>
+</li>
+<li>Declaration of a variable by the same name will throw</li>
+<li>Meant to fix mistakes where you reassign a variable and lose a reference that was passed along somewhere else</li>
+<li>In ES6, <strong>functions are block scoped</strong><ul>
+<li>Prevents leaking block-scoped secrets through hoisting, <code>{ let _foo = &#39;secret&#39;, bar = () =&gt; _foo; }</code></li>
+<li>Doesn’t break user code in most situations, and typically what you wanted anyways</li>
+</ul>
+</li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-let-const-and-temporal-dead-zone-in-depth" title="ES6 Let, Const, and the &#39;Temporal Dead Zone&#39; (TDZ) in Depth on Pony Foo" target="_blank" rel="noopener">ES6 Let, Const and the “Temporal Dead Zone” (TDZ) in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="Symbols"><a href="#Symbols" class="headerlink" title="Symbols"></a>Symbols</h1><ul>
+<li>A new primitive type in ES6</li>
+<li>You can create your own symbols using <code>var symbol = Symbol()</code></li>
+<li>You can add a description for debugging purposes, like <code>Symbol(&#39;ponyfoo&#39;)</code></li>
+<li>Symbols are immutable and unique. <code>Symbol()</code>, <code>Symbol()</code>, <code>Symbol(&#39;foo&#39;)</code> and <code>Symbol(&#39;foo&#39;)</code> are all different</li>
+<li>Symbols are of type <code>symbol</code>, thus: <code>typeof Symbol() === &#39;symbol&#39;</code></li>
+<li>You can also create global symbols with <code>Symbol.for(key)</code><ul>
+<li>If a symbol with the provided <code>key</code> already existed, you get that one back</li>
+<li>Otherwise, a new symbol is created, using <code>key</code> as its description as well</li>
+<li><code>Symbol.keyFor(symbol)</code> is the inverse function, taking a <code>symbol</code> and returning its <code>key</code></li>
+<li>Global symbols are <strong>as global as it gets</strong>, or <em>cross-realm</em>. Single registry used to look up these symbols across the runtime<ul>
+<li><code>window</code> context</li>
+<li><code>eval</code> context</li>
+<li><code>&lt;iframe&gt;</code> context, <code>Symbol.for(&#39;foo&#39;) === iframe.contentWindow.Symbol.for(&#39;foo&#39;)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>There’s also “well-known” symbols<ul>
+<li>Not on the global registry, accessible through <code>Symbol[name]</code>, e.g: <code>Symbol.iterator</code></li>
+<li>Cross-realm, meaning <code>Symbol.iterator === iframe.contentWindow.Symbol.iterator</code></li>
+<li>Used by specification to define protocols, such as the <a href="#iterators"><em>iterable</em> protocol</a> over <code>Symbol.iterator</code></li>
+<li>They’re not <strong>actually well-known</strong> – in colloquial terms</li>
+</ul>
+</li>
+<li>Iterating over symbol properties is hard, but not impossible and definitely not private<ul>
+<li>Symbols are hidden to all pre-ES6 “reflection” methods</li>
+<li>Symbols are accessible through <code>Object.getOwnPropertySymbols</code></li>
+<li>You won’t stumble upon them but you <strong>will</strong> find them if <em>actively looking</em></li>
+</ul>
+</li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-symbols-in-depth" title="ES6 Symbols in Depth on Pony Foo" target="_blank" rel="noopener">ES6 Symbols in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="Iterators"><a href="#Iterators" class="headerlink" title="Iterators"></a>Iterators</h1><ul>
+<li>Iterator and iterable protocol define how to iterate over any object, not just arrays and array-likes</li>
+<li>A well-known <code>Symbol</code> is used to assign an iterator to any object</li>
+<li><code>var foo = { [Symbol.iterator]: iterable}</code>, or <code>foo[Symbol.iterator] = iterable</code></li>
+<li>The <code>iterable</code> is a method that returns an <code>iterator</code> object that has a <code>next</code> method</li>
+<li>The <code>next</code> method returns objects with two properties, <code>value</code> and <code>done</code><ul>
+<li>The <code>value</code> property indicates the current value in the sequence being iterated</li>
+<li>The <code>done</code> property indicates whether there are any more items to iterate</li>
+</ul>
+</li>
+<li>Objects that have a <code>[Symbol.iterator]</code> value are <em>iterable</em>, because they subscribe to the iterable protocol</li>
+<li>Some built-ins like <code>Array</code>, <code>String</code>, or <code>arguments</code> – and <code>NodeList</code> in browsers – are iterable by default in ES6</li>
+<li>Iterable objects can be looped over with <code>for..of</code>, such as <code>for (let el of document.querySelectorAll(&#39;a&#39;))</code></li>
+<li>Iterable objects can be synthesized using the spread operator, like <code>[...document.querySelectorAll(&#39;a&#39;)]</code></li>
+<li>You can also use <code>Array.from(document.querySelectorAll(&#39;a&#39;))</code> to synthesize an iterable sequence into an array</li>
+<li>Iterators are <em>lazy</em>, and those that produce an infinite sequence still can lead to valid programs</li>
+<li>Be careful not to attempt to synthesize an infinite sequence with <code>...</code> or <code>Array.from</code> as that <strong>will</strong> cause an infinite loop</li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-iterators-in-depth" title="ES6 Iterators in Depth on Pony Foo" target="_blank" rel="noopener">ES6 Iterators in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="Generators"><a href="#Generators" class="headerlink" title="Generators"></a>Generators</h1><ul>
+<li>Generator functions are a special kind of <em>iterator</em> that can be declared using the <code>function* generator () {}</code> syntax</li>
+<li>Generator functions use <code>yield</code> to emit an element sequence</li>
+<li>Generator functions can also use <code>yield*</code> to delegate to another generator function <em>– or any iterable object</em></li>
+<li>Generator functions return a generator object that adheres to both the <em>iterable</em> and <em>iterator</em> protocols<ul>
+<li>Given <code>g = generator()</code>, <code>g</code> adheres to the iterable protocol because <code>g[Symbol.iterator]</code> is a method</li>
+<li>Given <code>g = generator()</code>, <code>g</code> adheres to the iterator protocol because <code>g.next</code> is a method</li>
+<li>The iterator for a generator object <code>g</code> is the generator itself: <code>g[Symbol.iterator]() === g</code></li>
+</ul>
+</li>
+<li>Pull values using <code>Array.from(g)</code>, <code>[...g]</code>, <code>for (let item of g)</code>, or just calling <code>g.next()</code></li>
+<li>Generator function execution is suspended, remembering the last position, in four different cases<ul>
+<li>A <code>yield</code> expression returning the next value in the sequence</li>
+<li>A <code>return</code> statement returning the last value in the sequence</li>
+<li>A <code>throw</code> statement halts execution in the generator entirely</li>
+<li>Reaching the end of the generator function signals <code>{ done: true }</code></li>
+</ul>
+</li>
+<li>Once the <code>g</code> sequence has ended, <code>g.next()</code> simply returns <code>{ done: true }</code> and has no effect</li>
+<li>It’s easy to make asynchronous flows feel synchronous<ul>
+<li>Take user-provided generator function</li>
+<li>User code is suspended while asynchronous operations take place</li>
+<li>Call <code>g.next()</code>, unsuspending execution in user code</li>
+</ul>
+</li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-generators-in-depth" title="ES6 Generators in Depth on Pony Foo" target="_blank" rel="noopener">ES6 Generators in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="Promises"><a href="#Promises" class="headerlink" title="Promises"></a>Promises</h1><ul>
+<li>Follows the <a href="https://promisesaplus.com/" title="An open standard for sound, interoperable JavaScript promises" target="_blank" rel="noopener"><code>Promises/A+</code></a> specification, was widely implemented in the wild before ES6 was standarized <em>(e.g <a href="https://github.com/petkaantonov/bluebird" title="petkaantonov/bluebird on GitHub" target="_blank" rel="noopener"><code>bluebird</code></a>)</em></li>
+<li>Promises behave like a tree. Add branches with <code>p.then(handler)</code> and <code>p.catch(handler)</code></li>
+<li>Create new <code>p</code> promises with <code>new Promise((resolve, reject) =&gt; { /* resolver */ })</code><ul>
+<li>The <code>resolve(value)</code> callback will fulfill the promise with the provided <code>value</code></li>
+<li>The <code>reject(reason)</code> callback will reject <code>p</code> with a <code>reason</code> error</li>
+<li>You can call those methods asynchronously, blocking deeper branches of the promise tree</li>
+</ul>
+</li>
+<li>Each call to <code>p.then</code> and <code>p.catch</code> creates another promise that’s blocked on <code>p</code> being settled</li>
+<li>Promises start out in <em>pending</em> state and are <strong>settled</strong> when they’re either <em>fulfilled</em> or <em>rejected</em></li>
+<li>Promises can only be settled once, and then they’re settled. Settled promises unblock deeper branches</li>
+<li>You can tack as many promises as you want onto as many branches as you need</li>
+<li>Each branch will execute either <code>.then</code> handlers or <code>.catch</code> handlers, never both</li>
+<li>A <code>.then</code> callback can transform the result of the previous branch by returning a value</li>
+<li>A <code>.then</code> callback can block on another promise by returning it</li>
+<li><code>p.catch(fn).catch(fn)</code> won’t do what you want – unless what you wanted is to catch errors in the error handler</li>
+<li><a href="https://ponyfoo.com/articles/es6-promises-in-depth#using-promiseresolve-and-promisereject" target="_blank" rel="noopener"><code>Promise.resolve(value)</code></a> creates a promise that’s fulfilled with the provided <code>value</code></li>
+<li><a href="https://ponyfoo.com/articles/es6-promises-in-depth#using-promiseresolve-and-promisereject" target="_blank" rel="noopener"><code>Promise.reject(reason)</code></a> creates a promise that’s rejected with the provided <code>reason</code></li>
+<li><a href="https://ponyfoo.com/articles/es6-promises-in-depth#leveraging-promiseall-and-promiserace" target="_blank" rel="noopener"><code>Promise.all(...promises)</code></a> creates a promise that settles when all <code>...promises</code> are fulfilled or 1 of them is rejected</li>
+<li><a href="https://ponyfoo.com/articles/es6-promises-in-depth#leveraging-promiseall-and-promiserace" target="_blank" rel="noopener"><code>Promise.race(...promises)</code></a> creates a promise that settles as soon as 1 of <code>...promises</code> is settled</li>
+<li>Use <a href="http://bevacqua.github.io/promisees/" title="Promisees — Promise visualization playground for the adventurous" target="_blank" rel="noopener">Promisees</a> – the promise visualization playground – to better understand promises</li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-promises-in-depth" title="ES6 Promises in Depth" target="_blank" rel="noopener">ES6 Promises in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="Maps"><a href="#Maps" class="headerlink" title="Maps"></a>Maps</h1><ul>
+<li>A replacement to the common pattern of creating a hash-map using plain JavaScript objects<ul>
+<li>Avoids security issues with user-provided keys</li>
+<li>Allows keys to be arbitrary values, you can even use DOM elements or functions as the <code>key</code> to an entry</li>
+</ul>
+</li>
+<li><code>Map</code> adheres to <em><a href="#iterators">iterable</a></em> protocol</li>
+<li>Create a <code>map</code> using <code>new Map()</code></li>
+<li>Initialize a map with an <code>iterable</code> like <code>[[key1, value1], [key2, value2]]</code> in <code>new Map(iterable)</code></li>
+<li>Use <code>map.set(key, value)</code> to add entries</li>
+<li>Use <code>map.get(key)</code> to get an entry</li>
+<li>Check for a <code>key</code> using <code>map.has(key)</code></li>
+<li>Remove entries with <code>map.delete(key)</code></li>
+<li>Iterate over <code>map</code> with <code>for (let [key, value] of map)</code>, the spread operator, <code>Array.from</code>, etc</li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-maps-in-depth" title="ES6 Maps in Depth on Pony Foo" target="_blank" rel="noopener">ES6 Maps in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="WeakMaps"><a href="#WeakMaps" class="headerlink" title="WeakMaps"></a>WeakMaps</h1><ul>
+<li>Similar to <code>Map</code>, but not quite the same</li>
+<li><code>WeakMap</code> isn’t iterable, so you don’t get enumeration methods like <code>.forEach</code>, <code>.clear</code>, and others you had in <code>Map</code></li>
+<li><code>WeakMap</code> keys must be reference types. You can’t use value types like symbols, numbers, or strings as keys</li>
+<li><code>WeakMap</code> entries with a <code>key</code> that’s the only reference to the referenced variable are subject to garbage collection</li>
+<li>That last point means <code>WeakMap</code> is great at keeping around metadata for objects, while those objects are still in use</li>
+<li>You avoid memory leaks, without manual reference counting – think of <code>WeakMap</code> as <a href="https://msdn.microsoft.com/en-us/library/system.idisposable%28v=vs.110%29.aspx?f=255&amp;MSPPError=-2147217396" title="IDisposable on MSDN" target="_blank" rel="noopener"><code>IDisposable</code></a> in .NET</li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-weakmaps-sets-and-weaksets-in-depth#es6-weakmaps" title="ES6 WeakMaps, Sets, and WeakSets in Depth on Pony Foo" target="_blank" rel="noopener">ES6 WeakMaps in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="Sets"><a href="#Sets" class="headerlink" title="Sets"></a>Sets</h1><ul>
+<li>Similar to <code>Map</code>, but not quite the same</li>
+<li><code>Set</code> doesn’t have keys, there’s only values</li>
+<li><code>set.set(value)</code> doesn’t look right, so we have <code>set.add(value)</code> instead</li>
+<li>Sets can’t have duplicate values because the values are also used as keys</li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-weakmaps-sets-and-weaksets-in-depth#es6-sets" title="ES6 WeakMaps, Sets, and WeakSets in Depth on Pony Foo" target="_blank" rel="noopener">ES6 Sets in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="WeakSets"><a href="#WeakSets" class="headerlink" title="WeakSets"></a>WeakSets</h1><ul>
+<li><code>WeakSet</code> is sort of a cross-breed between <code>Set</code> and <code>WeakMap</code></li>
+<li>A <code>WeakSet</code> is a set that can’t be iterated and doesn’t have enumeration methods</li>
+<li><code>WeakSet</code> values must be reference types</li>
+<li><code>WeakSet</code> may be useful for a metadata table indicating whether a reference is actively in use or not</li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-weakmaps-sets-and-weaksets-in-depth#es6-weaksets" title="ES6 WeakMaps, Sets, and WeakSets in Depth on Pony Foo" target="_blank" rel="noopener">ES6 WeakSets in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="Proxies"><a href="#Proxies" class="headerlink" title="Proxies"></a>Proxies</h1><ul>
+<li>Proxies are created with <code>new Proxy(target, handler)</code>, where <code>target</code> is any object and <code>handler</code> is configuration</li>
+<li>The default behavior of a <code>proxy</code> acts as a passthrough to the underlying <code>target</code> object</li>
+<li>Handlers determine how the underlying <code>target</code> object is accessed on top of regular object property access semantics</li>
+<li>You pass off references to <code>proxy</code> and retain strict control over how <code>target</code> can be interacted with</li>
+<li>Handlers are also known as traps, these terms are used interchangeably</li>
+<li>You can create <strong>revocable</strong> proxies with <code>Proxy.revocable(target, handler)</code><ul>
+<li>That method returns an object with <code>proxy</code> and <code>revoke</code> properties</li>
+<li>You could <a href="#destructuring">destructure</a> <code>var {proxy, revoke} = Proxy.revocable(target, handler)</code> for convenience</li>
+<li>You can configure the <code>proxy</code> all the same as with <code>new Proxy(target, handler)</code></li>
+<li>After <code>revoke()</code> is called, the <code>proxy</code> will <strong>throw</strong> on <em>any operation</em>, making it convenient when you can’t trust consumers</li>
+</ul>
+</li>
+<li><a href="https://ponyfoo.com/articles/es6-proxies-in-depth#get" target="_blank" rel="noopener"><code>get</code></a> – traps <code>proxy.prop</code> and <code>proxy[&#39;prop&#39;]</code></li>
+<li><a href="https://ponyfoo.com/articles/es6-proxies-in-depth#set" target="_blank" rel="noopener"><code>set</code></a> – traps <code>proxy.prop = value</code> and <code>proxy[&#39;prop&#39;] = value</code></li>
+<li><a href="https://ponyfoo.com/articles/es6-proxy-traps-in-depth#has" target="_blank" rel="noopener"><code>has</code></a> – traps <code>in</code> operator</li>
+<li><a href="https://ponyfoo.com/articles/es6-proxy-traps-in-depth#deleteproperty" target="_blank" rel="noopener"><code>deleteProperty</code></a> – traps <code>delete</code> operator</li>
+<li><a href="https://ponyfoo.com/articles/es6-proxy-traps-in-depth#defineproperty" target="_blank" rel="noopener"><code>defineProperty</code></a> – traps <code>Object.defineProperty</code> and declarative alternatives</li>
+<li><a href="https://ponyfoo.com/articles/es6-proxy-traps-in-depth#enumerate" target="_blank" rel="noopener"><code>enumerate</code></a> – traps <code>for..in</code> loops</li>
+<li><a href="https://ponyfoo.com/articles/es6-proxy-traps-in-depth#ownkeys" target="_blank" rel="noopener"><code>ownKeys</code></a> – traps <code>Object.keys</code> and related methods</li>
+<li><a href="https://ponyfoo.com/articles/es6-proxy-traps-in-depth#apply" target="_blank" rel="noopener"><code>apply</code></a> – traps <em>function calls</em></li>
+<li><a href="https://ponyfoo.com/articles/morees6-proxy-traps-in-depth#construct" target="_blank" rel="noopener"><code>construct</code></a> – traps usage of the <code>new</code> operator</li>
+<li><a href="https://ponyfoo.com/articles/morees6-proxy-traps-in-depth#getprototypeof" target="_blank" rel="noopener"><code>getPrototypeOf</code></a> – traps internal calls to <code>[[GetPrototypeOf]]</code></li>
+<li><a href="https://ponyfoo.com/articles/morees6-proxy-traps-in-depth#setprototypeof" target="_blank" rel="noopener"><code>setPrototypeOf</code></a> – traps calls to <code>Object.setPrototypeOf</code></li>
+<li><a href="https://ponyfoo.com/articles/morees6-proxy-traps-in-depth#isextensible" target="_blank" rel="noopener"><code>isExtensible</code></a> – traps calls to <code>Object.isExtensible</code></li>
+<li><a href="https://ponyfoo.com/articles/morees6-proxy-traps-in-depth#preventextensions" target="_blank" rel="noopener"><code>preventExtensions</code></a> – traps calls to <code>Object.preventExtensions</code></li>
+<li><a href="https://ponyfoo.com/articles/morees6-proxy-traps-in-depth#getownpropertydescriptor" target="_blank" rel="noopener"><code>getOwnPropertyDescriptor</code></a> – traps calls to <code>Object.getOwnPropertyDescriptor</code></li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-proxies-in-depth" title="ES6 Proxies in Depth on Pony Foo" target="_blank" rel="noopener">ES6 Proxies in Depth</a></li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-proxy-traps-in-depth" title="ES6 Proxy Traps in Depth on Pony Foo" target="_blank" rel="noopener">ES6 Proxy Traps in Depth</a></li>
+<li>Read <a href="https://ponyfoo.com/articles/more-es6-proxy-traps-in-depth" title="More ES6 Proxy Traps in Depth on Pony Foo" target="_blank" rel="noopener">More ES6 Proxy Traps in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="Reflection"><a href="#Reflection" class="headerlink" title="Reflection"></a>Reflection</h1><ul>
+<li><code>Reflection</code> is a new static built-in (think of <code>Math</code>) in ES6</li>
+<li><code>Reflection</code> methods have sensible internals, e.g <code>Reflect.defineProperty</code> returns a boolean instead of throwing</li>
+<li>There’s a <code>Reflection</code> method for each proxy trap handler, and they represent the default behavior of each trap</li>
+<li>Going forward, new reflection methods in the same vein as <code>Object.keys</code> will be placed in the <code>Reflection</code> namespace</li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-reflection-in-depth" title="ES6 Reflection in Depth on Pony Foo" target="_blank" rel="noopener">ES6 Reflection in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="Number"><a href="#Number" class="headerlink" title="Number"></a><code>Number</code></h1><ul>
+<li>Use <code>0b</code> prefix for binary, and <code>0o</code> prefix for octal integer literals</li>
+<li><code>Number.isNaN</code> and <code>Number.isFinite</code> are like their global namesakes, except that they <em>don’t</em> coerce input to <code>Number</code></li>
+<li><code>Number.parseInt</code> and <code>Number.parseFloat</code> are exactly the same as their global namesakes</li>
+<li><code>Number.isInteger</code> checks if input is a <code>Number</code> value that doesn’t have a decimal part</li>
+<li><code>Number.EPSILON</code> helps figure out negligible differences between two numbers – e.g. <code>0.1 + 0.2</code> and <code>0.3</code></li>
+<li><code>Number.MAX_SAFE_INTEGER</code> is the largest integer that can be safely and precisely represented in JavaScript</li>
+<li><code>Number.MIN_SAFE_INTEGER</code> is the smallest integer that can be safely and precisely represented in JavaScript</li>
+<li><code>Number.isSafeInteger</code> checks whether an integer is within those bounds, able to be represented safely and precisely</li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-number-improvements-in-depth" title="ES6 Number Improvements in Depth on Pony Foo" target="_blank" rel="noopener">ES6 <code>Number</code> Improvements in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="Math"><a href="#Math" class="headerlink" title="Math"></a><code>Math</code></h1><ul>
+<li><a href="https://ponyfoo.com/articles/es6-math-additions-in-depth#mathsign" target="_blank" rel="noopener"><code>Math.sign</code></a> – sign function of a number</li>
+<li><a href="https://ponyfoo.com/articles/es6-math-additions-in-depth#mathtrunc" target="_blank" rel="noopener"><code>Math.trunc</code></a> – integer part of a number</li>
+<li><a href="https://ponyfoo.com/articles/es6-math-additions-in-depth#mathcbrt" target="_blank" rel="noopener"><code>Math.cbrt</code></a> – cubic root of value, or <code class="md-code md-code-inline">∛‾value</code></li>
+<li><a href="https://ponyfoo.com/articles/es6-math-additions-in-depth#mathexpm1" target="_blank" rel="noopener"><code>Math.expm1</code></a> – <code>e</code> to the <code>value</code> minus <code>1</code>, or <code class="md-code md-code-inline">e<sup>value</sup> - 1</code></li>
+<li><a href="https://ponyfoo.com/articles/es6-math-additions-in-depth#mathlog1p" target="_blank" rel="noopener"><code>Math.log1p</code></a> – natural logarithm of <code>value + 1</code>, or <code class="md-code md-code-inline"><em>ln</em>(value + 1)</code></li>
+<li><a href="https://ponyfoo.com/articles/es6-math-additions-in-depth#mathlog10" target="_blank" rel="noopener"><code>Math.log10</code></a> – base 10 logarithm of <code>value</code>, or <code class="md-code md-code-inline"><em>log</em><sub>10</sub>(value)</code></li>
+<li><a href="https://ponyfoo.com/articles/es6-math-additions-in-depth#mathlog2" target="_blank" rel="noopener"><code>Math.log2</code></a> – base 2 logarithm of <code>value</code>, or <code class="md-code md-code-inline"><em>log</em><sub>2</sub>(value)</code></li>
+<li><a href="https://ponyfoo.com/articles/es6-math-additions-in-depth#mathsinh" target="_blank" rel="noopener"><code>Math.sinh</code></a> – hyperbolic sine of a number</li>
+<li><a href="https://ponyfoo.com/articles/es6-math-additions-in-depth#mathcosh" target="_blank" rel="noopener"><code>Math.cosh</code></a> – hyperbolic cosine of a number</li>
+<li><a href="https://ponyfoo.com/articles/es6-math-additions-in-depth#mathtanh" target="_blank" rel="noopener"><code>Math.tanh</code></a> – hyperbolic tangent of a number</li>
+<li><a href="https://ponyfoo.com/articles/es6-math-additions-in-depth#mathasinh" target="_blank" rel="noopener"><code>Math.asinh</code></a> – hyperbolic arc-sine of a number</li>
+<li><a href="https://ponyfoo.com/articles/es6-math-additions-in-depth#mathacosh" target="_blank" rel="noopener"><code>Math.acosh</code></a> – hyperbolic arc-cosine of a number</li>
+<li><a href="https://ponyfoo.com/articles/es6-math-additions-in-depth#mathatanh" target="_blank" rel="noopener"><code>Math.atanh</code></a> – hyperbolic arc-tangent of a number</li>
+<li><a href="https://ponyfoo.com/articles/es6-math-additions-in-depth#mathhypot" target="_blank" rel="noopener"><code>Math.hypot</code></a> – square root of the sum of squares</li>
+<li><a href="https://ponyfoo.com/articles/es6-math-additions-in-depth#mathclz32" target="_blank" rel="noopener"><code>Math.clz32</code></a> – leading zero bits in the 32-bit representation of a number</li>
+<li><a href="https://ponyfoo.com/articles/es6-math-additions-in-depth#mathimul" target="_blank" rel="noopener"><code>Math.imul</code></a> – <em>C-like</em> 32-bit multiplication</li>
+<li><a href="https://ponyfoo.com/articles/es6-math-additions-in-depth#mathfround" target="_blank" rel="noopener"><code>Math.fround</code></a> – nearest single-precision float representation of a number</li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-math-additions-in-depth" title="ES6 Math Additions in Depth on Pony Foo" target="_blank" rel="noopener">ES6 <code>Math</code> Additions in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="Array"><a href="#Array" class="headerlink" title="Array"></a><code>Array</code></h1><ul>
+<li><a href="https://ponyfoo.com/articles/es6-array-extensions-in-depth#arrayfrom" target="_blank" rel="noopener"><code>Array.from</code></a> – create <code>Array</code> instances from arraylike objects like <code>arguments</code> or iterables</li>
+<li><a href="https://ponyfoo.com/articles/es6-array-extensions-in-depth#arrayof" target="_blank" rel="noopener"><code>Array.of</code></a> – similar to <code>new Array(...items)</code>, but without special cases</li>
+<li><a href="https://ponyfoo.com/articles/es6-array-extensions-in-depth#arrayprototypecopywithin" target="_blank" rel="noopener"><code>Array.prototype.copyWithin</code></a> – copies a sequence of array elements into somewhere else in the array</li>
+<li><a href="https://ponyfoo.com/articles/es6-array-extensions-in-depth#arrayprototypefill" target="_blank" rel="noopener"><code>Array.prototype.fill</code></a> – fills all elements of an existing array with the provided value</li>
+<li><a href="https://ponyfoo.com/articles/es6-array-extensions-in-depth#arrayprototypefind" target="_blank" rel="noopener"><code>Array.prototype.find</code></a> – returns the first item to satisfy a callback</li>
+<li><a href="https://ponyfoo.com/articles/es6-array-extensions-in-depth#arrayprototypefindindex" target="_blank" rel="noopener"><code>Array.prototype.findIndex</code></a> – returns the index of the first item to satisfy a callback</li>
+<li><a href="https://ponyfoo.com/articles/es6-array-extensions-in-depth#arrayprototypekeys" target="_blank" rel="noopener"><code>Array.prototype.keys</code></a> – returns an iterator that yields a sequence holding the keys for the array</li>
+<li><a href="https://ponyfoo.com/articles/es6-array-extensions-in-depth#arrayprototypevalues" target="_blank" rel="noopener"><code>Array.prototype.values</code></a> – returns an iterator that yields a sequence holding the values for the array</li>
+<li><a href="https://ponyfoo.com/articles/es6-array-extensions-in-depth#arrayprototypeentries" target="_blank" rel="noopener"><code>Array.prototype.entries</code></a> – returns an iterator that yields a sequence holding key value pairs for the array</li>
+<li><a href="https://ponyfoo.com/articles/es6-array-extensions-in-depth#arrayprototype-symboliterator" target="_blank" rel="noopener"><code>Array.prototype[Symbol.iterator]</code></a> – exactly the same as the <a href="https://ponyfoo.com/articles/es6-array-extensions-in-depth#arrayprototypevalues" target="_blank" rel="noopener"><code>Array.prototype.values</code></a> method</li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-array-extensions-in-depth" title="ES6 Array Extensions in Depth on Pony Foo" target="_blank" rel="noopener">ES6 <code>Array</code> Extensions in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="Object"><a href="#Object" class="headerlink" title="Object"></a><code>Object</code></h1><ul>
+<li><a href="https://ponyfoo.com/articles/es6-object-changes-in-depth#objectassign" target="_blank" rel="noopener"><code>Object.assign</code></a> – recursive shallow overwrite for properties from <code>target, ...objects</code></li>
+<li><a href="https://ponyfoo.com/articles/es6-object-changes-in-depth#objectis" target="_blank" rel="noopener"><code>Object.is</code></a> – like using the <code>===</code> operator, but <code>true</code> for <code>NaN</code> vs <code>NaN</code>, and <code>false</code> for <code>+0</code> vs <code>-0</code></li>
+<li><a href="https://ponyfoo.com/articles/es6-object-changes-in-depth#objectgetownpropertysymbols" target="_blank" rel="noopener"><code>Object.getOwnPropertySymbols</code></a> – returns all own property symbols found on an object</li>
+<li><a href="https://ponyfoo.com/articles/es6-object-changes-in-depth#objectsetprototypeof" target="_blank" rel="noopener"><code>Object.setPrototypeOf</code></a> – changes prototype. Equivalent to <code>Object.prototype.__proto__</code> setter</li>
+<li>See also <a href="#object-literals">Object Literals</a> section</li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-object-changes-in-depth" title="ES6 Object Changes in Depth on Pony Foo" target="_blank" rel="noopener">ES6 <code>Object</code> Changes in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="Strings-and-Unicode"><a href="#Strings-and-Unicode" class="headerlink" title="Strings and Unicode"></a>Strings and Unicode</h1><ul>
+<li>String Manipulation<ul>
+<li><a href="https://ponyfoo.com/articles/es6-strings-and-unicode-in-depth#stringprototypestartswith" target="_blank" rel="noopener"><code>String.prototype.startsWith</code></a> – whether the string starts with <code>value</code></li>
+<li><a href="https://ponyfoo.com/articles/es6-strings-and-unicode-in-depth#stringprototypeendswith" target="_blank" rel="noopener"><code>String.prototype.endsWith</code></a> – whether the string ends in <code>value</code></li>
+<li><a href="https://ponyfoo.com/articles/es6-strings-and-unicode-in-depth#stringprototypeincludes" target="_blank" rel="noopener"><code>String.prototype.includes</code></a> – whether the string contains <code>value</code> anywhere</li>
+<li><a href="https://ponyfoo.com/articles/es6-strings-and-unicode-in-depth#stringprototyperepeat" target="_blank" rel="noopener"><code>String.prototype.repeat</code></a> – returns the string repeated <code>amount</code> times</li>
+<li><a href="https://ponyfoo.com/articles/es6-strings-and-unicode-in-depth#stringprototype-symboliterator" target="_blank" rel="noopener"><code>String.prototype[Symbol.iterator]</code></a> – lets you iterate over a sequence of unicode code points <em>(not characters)</em></li>
+</ul>
+</li>
+<li><a href="https://ponyfoo.com/articles/es6-strings-and-unicode-in-depth#unicode" target="_blank" rel="noopener">Unicode</a><ul>
+<li><a href="https://ponyfoo.com/articles/es6-strings-and-unicode-in-depth#stringprototypecodepointat" target="_blank" rel="noopener"><code>String.prototype.codePointAt</code></a> – base-10 numeric representation of a code point at a given position in string</li>
+<li><a href="https://ponyfoo.com/articles/es6-strings-and-unicode-in-depth#stringfromcodepoint`" target="_blank" rel="noopener"><code>String.fromCodePoint</code></a> – given <code>...codepoints</code>, returns a string made of their unicode representations</li>
+<li><a href="https://ponyfoo.com/articles/es6-strings-and-unicode-in-depth#stringprototypenormalize" target="_blank" rel="noopener"><code>String.prototype.normalize</code></a> – returns a normalized version of the string’s unicode representation</li>
+</ul>
+</li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-strings-and-unicode-in-depth" title="ES6 Strings (and Unicode, ❤) in Depth" target="_blank" rel="noopener">ES6 Strings and Unicode Additions in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<h1 id="Modules"><a href="#Modules" class="headerlink" title="Modules"></a>Modules</h1><ul>
+<li><a href="https://ponyfoo.com/articles/es6-modules-in-depth#strict-mode" target="_blank" rel="noopener">Strict Mode</a> is turned on by default in the ES6 module system</li>
+<li>ES6 modules are files that <a href="https://ponyfoo.com/articles/es6-modules-in-depth#export" target="_blank" rel="noopener"><code>export</code></a> an API</li>
+<li><a href="https://ponyfoo.com/articles/es6-modules-in-depth#exporting-a-default-binding" target="_blank" rel="noopener"><code>export default value</code></a> exports a default binding</li>
+<li><a href="https://ponyfoo.com/articles/es6-modules-in-depth#named-exports" target="_blank" rel="noopener"><code>export var foo = &#39;bar&#39;</code></a> exports a named binding</li>
+<li>Named exports are bindings that <a href="https://ponyfoo.com/articles/es6-modules-in-depth#bindings-not-values" target="_blank" rel="noopener">can be changed</a> at any time from the module that’s exporting them</li>
+<li><code>export { foo, bar }</code> exports <a href="https://ponyfoo.com/articles/es6-modules-in-depth#exporting-lists" target="_blank" rel="noopener">a list of named exports</a></li>
+<li><code>export { foo as ponyfoo }</code> aliases the export to be referenced as <code>ponyfoo</code> instead</li>
+<li><code>export { foo as default }</code> marks the named export as the default export</li>
+<li>As <a href="https://ponyfoo.com/articles/es6-modules-in-depth#best-practices-and-export" target="_blank" rel="noopener">a best practice</a>, <code>export default api</code> at the end of all your modules, where <code>api</code> is an object, avoids confusion</li>
+<li>Module loading is implementation-specific, allows interoperation with CommonJS</li>
+<li><a href="https://ponyfoo.com/articles/es6-modules-in-depth#import" target="_blank" rel="noopener"><code>import &#39;foo&#39;</code></a> loads the <code>foo</code> module into the current module</li>
+<li><a href="https://ponyfoo.com/articles/es6-modules-in-depth#importing-default-exports" target="_blank" rel="noopener"><code>import foo from &#39;ponyfoo&#39;</code></a> assigns the default export of <code>ponyfoo</code> to a local <code>foo</code> variable</li>
+<li><a href="https://ponyfoo.com/articles/es6-modules-in-depth#importing-named-exports" target="_blank" rel="noopener"><code>import {foo, bar} from &#39;baz&#39;</code></a> imports named exports <code>foo</code> and <code>bar</code> from the <code>baz</code> module</li>
+<li><code>import {foo as bar} from &#39;baz&#39;</code> imports named export <code>foo</code> but aliased as a <code>bar</code> variable</li>
+<li><code>import {default} from &#39;foo&#39;</code> also imports the default export</li>
+<li><code>import {default as bar} from &#39;foo&#39;</code> imports the default export aliased as <code>bar</code></li>
+<li><code>import foo, {bar, baz} from &#39;foo&#39;</code> mixes default <code>foo</code> with named exports <code>bar</code> and <code>baz</code> in one declaration</li>
+<li><a href="https://ponyfoo.com/articles/es6-modules-in-depth#import-all-the-things" target="_blank" rel="noopener"><code>import * as foo from &#39;foo&#39;</code></a> imports the namespace object<ul>
+<li>Contains all named exports in <code>foo[name]</code></li>
+<li>Contains the default export in <code>foo.default</code>, if a default export was declared in the module</li>
+</ul>
+</li>
+<li>Read <a href="https://ponyfoo.com/articles/es6-modules-in-depth" title="ES6 Modules in Depth on Pony Foo" target="_blank" rel="noopener">ES6 Modules Additions in Depth</a></li>
+</ul>
+<p><sup><a href="#table-of-contents">(back to table of contents)</a></sup></p>
+<p>Time for a bullet point detox. Then again, I <em>did warn you</em> to read the <a href="https://ponyfoo.com/articles/tagged/es6-in-depth" title="ES6 in Depth on Pony Foo" target="_blank" rel="noopener">article series</a> instead. Don’t forget to subscribe and maybe even <a href="http://patreon.com/bevacqua" title="My Patreon Account" target="_blank" rel="noopener">contribute to keep Pony Foo alive</a>. Also, did you try the <a href="https://en.wikipedia.org/wiki/Konami_Code" target="_blank" rel="noopener">Konami code</a> just yet?</p>
+
+      
+    </div>
+    
+    
+    
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/07/13/Javascript兼容性问题/" rel="next" title="Javascript 兼容性问题汇总">
+                <i class="fa fa-chevron-left"></i> Javascript 兼容性问题汇总
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/14/async/" rel="prev" title="es6 async 函数">
+                es6 async 函数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">hubary</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hubary" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:hubary@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6-Overview-in-350-Bullet-Points"><span class="nav-number">1.</span> <span class="nav-text">ES6 Overview in 350 Bullet Points</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Table-of-Contents"><span class="nav-number">2.</span> <span class="nav-text">Table of Contents</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">3.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tooling"><span class="nav-number">4.</span> <span class="nav-text">Tooling</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Assignment-Destructuring"><span class="nav-number">5.</span> <span class="nav-text">Assignment Destructuring</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spread-Operator-and-Rest-Parameters"><span class="nav-number">6.</span> <span class="nav-text">Spread Operator and Rest Parameters</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Arrow-Functions"><span class="nav-number">7.</span> <span class="nav-text">Arrow Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Template-Literals"><span class="nav-number">8.</span> <span class="nav-text">Template Literals</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object-Literals"><span class="nav-number">9.</span> <span class="nav-text">Object Literals</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Classes"><span class="nav-number">10.</span> <span class="nav-text">Classes</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Let-and-Const"><span class="nav-number">11.</span> <span class="nav-text">Let and Const</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Symbols"><span class="nav-number">12.</span> <span class="nav-text">Symbols</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Iterators"><span class="nav-number">13.</span> <span class="nav-text">Iterators</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Generators"><span class="nav-number">14.</span> <span class="nav-text">Generators</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Promises"><span class="nav-number">15.</span> <span class="nav-text">Promises</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Maps"><span class="nav-number">16.</span> <span class="nav-text">Maps</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WeakMaps"><span class="nav-number">17.</span> <span class="nav-text">WeakMaps</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sets"><span class="nav-number">18.</span> <span class="nav-text">Sets</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WeakSets"><span class="nav-number">19.</span> <span class="nav-text">WeakSets</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Proxies"><span class="nav-number">20.</span> <span class="nav-text">Proxies</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reflection"><span class="nav-number">21.</span> <span class="nav-text">Reflection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Number"><span class="nav-number">22.</span> <span class="nav-text">Number</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Math"><span class="nav-number">23.</span> <span class="nav-text">Math</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Array"><span class="nav-number">24.</span> <span class="nav-text">Array</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object"><span class="nav-number">25.</span> <span class="nav-text">Object</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Strings-and-Unicode"><span class="nav-number">26.</span> <span class="nav-text">Strings and Unicode</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Modules"><span class="nav-number">27.</span> <span class="nav-text">Modules</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hubary</span>
+
+  
+</div>
+
+
+  <div class="powered-by">银河寒流</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
