@@ -1109,6 +1109,10 @@ pre .javascript .function {
   }
 }
 .brand {
+  border-radius: 5px;
+  -moz-box-shadow: 1px -1px 60px rgba(81,41,161,0.61);
+  -webkit-box-shadow: -1px -1px 60px rgba(81,41,161,0.61);
+  box-shadow: -1px -1px 60px rgba(81,41,161,0.61);
   position: relative;
   display: inline-block;
   padding: 0 40px;
@@ -1832,7 +1836,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffe941;
+  background: #1ff;
 }
 .links-of-blogroll {
   font-size: 13px;
